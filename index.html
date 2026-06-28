@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vannah Rituals - Massages Bien-Être en Entreprise à Montpellier</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- SEO -->
+    <meta name="description" content="Massages assis en entreprise à Montpellier et alentours. Vannah Rituals accompagne vos équipes avec des interventions sur chaise ergonomique, ponctuelles ou récurrentes, pour réduire le stress et prévenir les TMS au travail.">
+
+    <!-- Open Graph (aperçu sur réseaux sociaux / messageries) -->
+    <meta property="og:title" content="Vannah Rituals - Massages Bien-Être en Entreprise à Montpellier">
+    <meta property="og:description" content="Offrez une pause bien-être à vos collaborateurs : massages sur chaise ergonomique, directement sur leur lieu de travail.">
+    <meta property="og:image" content="images/savannah-massage.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- Primary Brand Palette: Coffee Bean / Dark Walnut / Tan / Pale Oak / White Smoke -->
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F4F2F3; /* White Smoke */
+            color: #230903; /* Coffee Bean */
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom Tab Styling */
+        .tab-btn {
+            transition: all 0.3s ease;
+            border: 2px solid #CCB7A5; /* Pale Oak */
+            color: #5E2B0A; /* Dark Walnut */
+        }
+        .tab-btn:hover {
+            background-color: #CCB7A5; /* Pale Oak */
+            color: #230903; /* Coffee Bean */
+        }
+        .tab-btn.active {
+            background-color: #5E2B0A; /* Dark Walnut */
+            color: #F4F2F3; /* White Smoke */
+            border-color: #5E2B0A;
+        }
+
+        /* Carousel dots */
+        .carousel-dot.active {
+            background-color: #ffffff;
+            width: 1.5rem;
+            border-radius: 9999px;
+        }
+        
+        /* Smooth fade for content */
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
+            <!-- Logo now directly inserted -->
+            <img src="images/logo.png" 
+                 alt="Logo Vannah Rituals" 
+                 class="h-16 w-16 rounded-full object-cover border border-[#CCB7A5]">
+            
+            <div class="hidden md:flex space-x-6 text-sm font-semibold text-[#5E2B0A]">
+                <a href="#experience" class="hover:text-[#230903] transition">L'Expérience</a>
+                <a href="#enaction" class="hover:text-[#230903] transition">En Action</a>
+                <a href="#offres" class="hover:text-[#230903] transition">Offres & Tarifs</a>
+                <a href="#apropos" class="hover:text-[#230903] transition">À propos</a>
+                <a href="#contact" class="hover:text-[#230903] transition">Contact</a>
+            </div>
+            <a href="#contact" class="bg-[#230903] text-[#F4F2F3] px-5 py-2 rounded-full text-sm font-bold hover:bg-[#5E2B0A] transition">
+                Réserver
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative py-16 md:py-24 text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('images/chaise-vide.jpg');"></div>
+        <div class="absolute inset-0 bg-[#CCB7A5]" style="opacity: 0.85;"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <span class="text-[#230903] font-bold tracking-widest uppercase text-sm mb-4 block">Qualité de Vie au Travail</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#230903] mb-6 leading-tight">
+                Offrez une pause bien-être <br/> à vos collaborateurs
+            </h1>
+            <p class="text-lg md:text-xl text-[#230903] opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Interventions de massages sur chaise ergonomique à Montpellier et ses alentours. 
+                Réduisez le stress, soulagez les tensions et boostez l'énergie de vos équipes directement sur leur lieu de travail.
+            </p>
+            <a href="#offres" class="inline-block bg-[#5E2B0A] text-[#F4F2F3] px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:bg-[#230903] transition transform hover:-translate-y-1">
+                Découvrir les offres
+            </a>
+        </div>
+    </header>
+
+    <!-- The Experience Section -->
+    <section id="experience" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#230903] mb-4">Un rituel pensé pour l'entreprise</h2>
+                <p class="text-[#5E2B0A] max-w-2xl mx-auto">Le massage assis se pratique habillé, sans huile sur le corps, et s'intègre parfaitement dans une journée de travail (15 à 20 minutes par personne).</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-[#CCB7A5] hover:shadow-md transition">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="text-[#5E2B0A]">
+                            <svg viewBox="0 0 36 36" class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 22c-3-2-3-7 1-9 3-1.5 6 0 6 3"/>
+                                <path d="M27 22c3-2 3-7-1-9-3-1.5-6 0-6 3"/>
+                                <path d="M9 22c0 4 4 7 9 7s9-3 9-7"/>
+                            </svg>
+                        </div>
+                        <span class="bg-[#D3B88C] text-[#230903] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Personnalisable</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#230903] mb-3">Protocole Complet</h3>
+                    <ul class="text-[#5E2B0A] space-y-2 text-sm">
+                        <li>&#x2714; Massage du dos</li>
+                        <li>&#x2714; Massage des trapèzes</li>
+                        <li>&#x2714; Massage du cuir chevelu</li>
+                        <li>&#x2714; Massage des mains</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-[#CCB7A5] hover:shadow-md transition">
+                    <div class="mb-4 text-[#5E2B0A]">
+                        <svg viewBox="0 0 36 36" class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 6c4 6 8 11 8 15a8 8 0 1 1-16 0c0-4 4-9 8-15Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#230903] mb-3">Les petits plus</h3>
+                    <ul class="text-[#5E2B0A] space-y-2 text-sm">
+                        <li>&#x2714; Oshibori chaud</li>
+                        <li>&#x2714; Musique relaxante</li>
+                        <li>&#x2714; Subtiles notes d'huiles essentielles</li>
+                        <li>&#x2714; Crème hydratante</li>
+                        <li>&#x2714; Shot détox <span class="text-xs opacity-75">(jus frais préparé maison, servi bien frais)</span></li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-[#CCB7A5] hover:shadow-md transition">
+                    <div class="mb-4 text-[#5E2B0A]">
+                        <svg viewBox="0 0 36 36" class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="18" cy="18" r="6"/>
+                            <path d="M18 4v4M18 28v4M4 18h4M28 18h4M8.5 8.5l2.8 2.8M27.5 8.5l-2.8 2.8M8.5 27.5l2.8-2.8M27.5 27.5l-2.8-2.8"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#230903] mb-3">Bénéfices immédiats</h3>
+                    <ul class="text-[#5E2B0A] space-y-2 text-sm mb-4">
+                        <li>&#x2714; Relâchement des tensions musculo-squelettiques (TMS)</li>
+                        <li>&#x2714; Diminution de la fatigue mentale</li>
+                        <li>&#x2714; Regain de concentration</li>
+                    </ul>
+                    <div class="border-l-4 border-[#D3B88C] pl-3">
+                        <p class="text-[#230903] text-sm font-semibold mb-1">Impact Employeur :</p>
+                        <p class="text-[#5E2B0A] text-xs">C'est un puissant levier de reconnaissance. Le collaborateur se sent valorisé par sa direction, renforçant la cohésion d'équipe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- En Action Carousel -->
+    <section id="enaction" class="py-20 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#230903] mb-4">En action</h2>
+                <p class="text-[#5E2B0A] max-w-2xl mx-auto">Quelques instants pris sur le terrain, chez nos entreprises partenaires.</p>
+            </div>
+
+            <div class="relative rounded-3xl overflow-hidden shadow-xl border border-[#CCB7A5] bg-stone-100">
+                <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+                    <div class="w-full shrink-0">
+                        <img src="images/chaise-vide.jpg" alt="Chaise de massage prête pour une intervention" class="w-full h-[420px] md:h-[520px] object-cover">
+                    </div>
+                    <div class="w-full shrink-0">
+                        <img src="images/massage-dos.jpg" alt="Massage assis sur le lieu de travail" class="w-full h-[420px] md:h-[520px] object-cover">
+                    </div>
+                    <div class="w-full shrink-0">
+                        <img src="images/massage-action.jpg" alt="Intervention de massage bien-être en entreprise" class="w-full h-[420px] md:h-[520px] object-cover">
+                    </div>
+                </div>
+
+                <button onclick="moveCarousel(-1)" aria-label="Photo précédente" class="absolute left-3 top-1/2 -translate-y-1/2 bg-[#230903]/70 hover:bg-[#230903] text-white rounded-full w-10 h-10 flex items-center justify-center transition">&#8249;</button>
+                <button onclick="moveCarousel(1)" aria-label="Photo suivante" class="absolute right-3 top-1/2 -translate-y-1/2 bg-[#230903]/70 hover:bg-[#230903] text-white rounded-full w-10 h-10 flex items-center justify-center transition">&#8250;</button>
+
+                <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    <button onclick="goToSlide(0)" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/60" aria-label="Photo 1"></button>
+                    <button onclick="goToSlide(1)" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/60" aria-label="Photo 2"></button>
+                    <button onclick="goToSlide(2)" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/60" aria-label="Photo 3"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Pricing Dashboard -->
+    <section id="offres" class="py-20 bg-[#CCB7A5] px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#230903] mb-4">Tarifs professionnels</h2>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
+                <div class="w-full p-8 md:p-12">
+                    <div class="flex flex-col sm:flex-row gap-3 mb-8">
+                        <button onclick="changeTab('ponctuel')" id="btn-ponctuel" class="tab-btn active flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">Intervention Ponctuelle</button>
+                        <button onclick="changeTab('recurrent')" id="btn-recurrent" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">RDV Récurrent</button>
+                        <button onclick="changeTab('seminaire')" id="btn-seminaire" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">Séminaires & QVT</button>
+                    </div>
+
+                    <div id="dynamic-content" class="fade-in">
+                        <h3 id="offer-title" class="text-2xl font-serif font-bold text-[#230903] mb-3">Intervention Ponctuelle</h3>
+                        <p id="offer-desc" class="text-[#5E2B0A] mb-6">Description ici...</p>
+                        
+                        <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+                            <div id="row-half" class="flex justify-between items-end mb-4 border-b border-stone-200 pb-4">
+                                <div><span class="block text-sm font-bold uppercase text-[#5E2B0A]">Demi-journée (4h)</span><span class="text-xs text-stone-500">Environ 10 personnes</span></div>
+                                <div class="text-2xl font-bold text-[#230903]" id="price-half">0 €</div>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <div><span id="label-full-title" class="block text-sm font-bold uppercase text-[#5E2B0A]">Journée complète (8h)</span><span id="label-full-sub" class="text-xs text-stone-500">Environ 20 personnes</span></div>
+                                <div class="text-2xl font-bold text-[#230903]" id="price-full">0 €</div>
+                            </div>
+                        </div>
+
+                        <div id="discovery-wrapper" class="mt-4 flex justify-center">
+                            <div id="discovery-badge" class="bg-[#D3B88C] text-[#230903] px-6 py-3 rounded-lg text-sm font-bold shadow-md">
+                                <span id="discovery-text">Offre Découverte (1ère fois) : 240€ la 1/2 journée / 420€ la journée</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section revised -->
+    <section id="apropos" class="py-20 bg-white px-4">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="aspect-square rounded-3xl overflow-hidden border-4 border-[#CCB7A5]">
+                <img src="images/savannah-massage.jpg" alt="Savannah, praticienne Vannah Rituals, en plein massage assis" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <h2 class="text-3xl font-serif font-bold text-[#230903] mb-6">Mon engagement</h2>
+                <p class="text-[#5E2B0A] mb-4 leading-relaxed font-bold text-xl">Transformer vos pauses en moments de reconnexion.</p>
+                <p class="text-[#5E2B0A] mb-4 leading-relaxed">Passionnée par le lien corps-esprit, j’ai fondé Vannah Rituals pour faire du bien-être un moteur de performance durable.</p>
+                <p class="text-[#5E2B0A] mb-4 leading-relaxed">Diplômée en massage, je transforme chaque intervention en véritable rituel sensoriel : huiles essentielles, ambiance sonore et attention aux détails.</p>
+                <p class="text-[#5E2B0A] leading-relaxed italic">Mon objectif ? Que chaque collaborateur reprenne son poste serein et reboosté.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confiance & Sérieux -->
+    <section id="confiance" class="py-20 px-4 bg-[#F4F2F3]">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#230903] mb-4">Confiance & sérieux</h2>
+                <p class="text-[#5E2B0A] max-w-2xl mx-auto leading-relaxed">
+                    Vannah Rituals est une activité en plein développement à Montpellier. Pas encore de longue liste d'avis en ligne, mais des bases professionnelles solides et un vrai engagement qualité à chaque intervention.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-[#CCB7A5] text-center">
+                    <div class="text-[#5E2B0A] flex justify-center mb-3">
+                        <svg viewBox="0 0 36 36" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="18" cy="13" r="7"/>
+                            <path d="M13 19l-3 10 8-4 8 4-3-10"/>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-bold text-[#230903] mb-1">Diplômée</p>
+                    <p class="text-xs text-[#5E2B0A]">Formation certifiée en massage bien-être</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-[#CCB7A5] text-center">
+                    <div class="text-[#5E2B0A] flex justify-center mb-3">
+                        <svg viewBox="0 0 36 36" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="14" width="24" height="16" rx="2"/>
+                            <path d="M13 14v-3a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v3"/>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-bold text-[#230903] mb-1">Matériel pro</p>
+                    <p class="text-xs text-[#5E2B0A]">Chaise ergonomique & rituel complet</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-[#CCB7A5] text-center">
+                    <div class="text-[#5E2B0A] flex justify-center mb-3">
+                        <svg viewBox="0 0 36 36" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 32s10-10.5 10-17a10 10 0 1 0-20 0c0 6.5 10 17 10 17Z"/>
+                            <circle cx="18" cy="15" r="3.5"/>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-bold text-[#230903] mb-1">Sur site</p>
+                    <p class="text-xs text-[#5E2B0A]">À Montpellier et ses alentours</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-[#CCB7A5] text-center">
+                    <div class="text-[#5E2B0A] flex justify-center mb-3">
+                        <svg viewBox="0 0 36 36" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="9" width="24" height="21" rx="2"/>
+                            <path d="M6 15h24M12 5v8M24 5v8"/>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-bold text-[#230903] mb-1">Flexible</p>
+                    <p class="text-xs text-[#5E2B0A]">Ponctuel ou récurrent, à votre rythme</p>
+                </div>
+            </div>
+
+            <!--
+                TEMOIGNAGE — à activer dès qu'un accord écrit est obtenu (ex: retour CSE Teads).
+                Décommenter ce bloc et remplacer le texte/nom/entreprise entre crochets.
+
+                <div class="mt-12 max-w-2xl mx-auto bg-white p-8 rounded-2xl border border-[#CCB7A5] text-center">
+                    <p class="text-[#230903] text-lg italic leading-relaxed mb-4">"[Citation du témoignage]"</p>
+                    <p class="text-sm font-bold text-[#5E2B0A]">— [Prénom], [Entreprise]</p>
+                </div>
+            -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-[#230903] text-[#F4F2F3] text-center">
+        <h2 class="text-3xl font-serif font-bold mb-4">Prêt à faire entrer le bien-être ?</h2>
+        <p class="text-[#CCB7A5] max-w-xl mx-auto mb-10 leading-relaxed">
+            Contactez-moi directement par téléphone ou email pour réserver — chaque intervention est calée selon vos besoins (nombre de personnes, durée, lieu).
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+33643456706" class="bg-[#D3B88C] text-[#230903] px-8 py-4 rounded-full font-bold text-lg hover:bg-[#CCB7A5] transition flex items-center justify-center gap-2">
+                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.4 11 11 0 0 0 3.4.5 1.5 1.5 0 0 1 1.5 1.5V20a1.5 1.5 0 0 1-1.5 1.5A17.5 17.5 0 0 1 2.5 4 1.5 1.5 0 0 1 4 2.5h3.2a1.5 1.5 0 0 1 1.5 1.5 11 11 0 0 0 .5 3.4 1.5 1.5 0 0 1-.4 1.5l-2.2 2.2Z"/>
+                </svg>
+                06 43 45 67 06
+            </a>
+            <a href="mailto:savannahrodriguez100999@gmail.com" class="border-2 border-[#D3B88C] text-[#D3B88C] px-8 py-4 rounded-full font-bold text-base hover:bg-[#D3B88C] hover:text-[#230903] transition flex items-center justify-center gap-2">
+                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="5" width="18" height="14" rx="2"/>
+                    <path d="m4 7 8 6 8-6"/>
+                </svg>
+                savannahrodriguez100999@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a0602] text-[#CCB7A5] text-xs py-6 px-4 text-center">
+        <p class="mb-2">© 2026 Vannah Rituals — Savannah Taiton, auto-entrepreneure — SIRET 913 830 154 00013</p>
+        <button onclick="openMentions()" class="underline hover:text-white transition">Mentions légales</button>
+    </footer>
+
+    <!-- Mentions légales Modal -->
+    <div id="mentions-overlay" class="hidden fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4" onclick="if(event.target===this) closeMentions()">
+        <div class="bg-[#F4F2F3] rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 relative">
+            <button onclick="closeMentions()" aria-label="Fermer" class="absolute top-4 right-4 text-[#230903] hover:text-[#5E2B0A] text-2xl leading-none">&times;</button>
+            <h2 class="text-2xl font-serif font-bold text-[#230903] mb-6">Mentions légales</h2>
+
+            <h3 class="font-bold text-[#230903] mb-1">Éditeur du site</h3>
+            <p class="text-[#5E2B0A] text-sm mb-4 leading-relaxed">
+                Savannah Taiton, entrepreneure individuelle (micro-entreprise), exerçant sous le nom commercial <strong>Vannah Rituals</strong>.<br>
+                SIRET : 913 830 154 00013<br>
+                TVA non applicable, art. 293 B du Code général des impôts<br>
+                Adresse : Montpellier (34)<br>
+                Téléphone : 06 43 45 67 06<br>
+                Email : savannahrodriguez100999@gmail.com
+            </p>
+
+            <h3 class="font-bold text-[#230903] mb-1">Directrice de la publication</h3>
+            <p class="text-[#5E2B0A] text-sm mb-4">Savannah Taiton</p>
+
+            <h3 class="font-bold text-[#230903] mb-1">Hébergement</h3>
+            <p class="text-[#5E2B0A] text-sm mb-4">Hébergeur à compléter.</p>
+
+            <h3 class="font-bold text-[#230903] mb-1">Propriété intellectuelle</h3>
+            <p class="text-[#5E2B0A] text-sm mb-4 leading-relaxed">
+                L'ensemble des contenus présents sur ce site (textes, photographies, logo, identité visuelle) est la propriété de Vannah Rituals, sauf mention contraire. Toute reproduction, totale ou partielle, est interdite sans autorisation préalable.
+            </p>
+
+            <h3 class="font-bold text-[#230903] mb-1">Données personnelles</h3>
+            <p class="text-[#5E2B0A] text-sm mb-4 leading-relaxed">
+                Les informations transmises via les coordonnées de contact (téléphone, email) sont utilisées uniquement dans le cadre de la gestion de la relation commerciale, et ne sont cédées à aucun tiers.
+            </p>
+
+            <h3 class="font-bold text-[#230903] mb-1">Responsabilité</h3>
+            <p class="text-[#5E2B0A] text-sm leading-relaxed">
+                Vannah Rituals s'efforce d'assurer l'exactitude des informations diffusées sur ce site, sans garantie d'exhaustivité. Vannah Rituals ne pourra être tenue responsable d'éventuelles erreurs ou omissions.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // --- Mentions légales modal ---
+        function openMentions() {
+            document.getElementById('mentions-overlay').classList.remove('hidden');
+        }
+        function closeMentions() {
+            document.getElementById('mentions-overlay').classList.add('hidden');
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMentions();
+        });
+
+        // --- Carousel "En Action" ---
+        let carouselIndex = 0;
+        const carouselSlideCount = 3;
+        let carouselTimer = null;
+
+        function updateCarousel() {
+            const track = document.getElementById('carousel-track');
+            track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === carouselIndex);
+            });
+        }
+
+        function moveCarousel(direction) {
+            carouselIndex = (carouselIndex + direction + carouselSlideCount) % carouselSlideCount;
+            updateCarousel();
+            restartAutoplay();
+        }
+
+        function goToSlide(i) {
+            carouselIndex = i;
+            updateCarousel();
+            restartAutoplay();
+        }
+
+        function restartAutoplay() {
+            if (carouselTimer) clearInterval(carouselTimer);
+            carouselTimer = setInterval(() => moveCarousel(1), 6000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel();
+            restartAutoplay();
+        });
+
+        const offerData = {
+            ponctuel: { title: "Intervention Ponctuelle", desc: "Pour une occasion ponctuelle : féliciter une équipe après un succès, soulager une période chargée, ou simplement offrir une pause bien méritée.", priceHalf: "350 €", priceFull: "600 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: false },
+            recurrent: { title: "Rendez-vous Récurrent", desc: "Le choix le plus stratégique pour fidéliser vos talents. En instaurant un rendez-vous hebdomadaire ou mensuel, vous prévenez l'apparition des TMS avant qu'ils ne s'installent.", priceHalf: "300 €", priceFull: "550 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: true, discoveryText: "Offre Découverte (1ère fois) : 240€ (1/2 journée) / 420€ (journée)" },
+            seminaire: { title: "Séminaires & QVT", desc: "Pour vos grands événements : semaine QVT, séminaire d'entreprise, journée à thème. Une expérience bien-être pensée sur-mesure selon votre programme.", priceHalf: "Sur devis", priceFull: "Sur devis", fullTitle: "Journée complète", fullSub: "", showHalfRow: false, showDiscovery: false }
+        };
+
+        function changeTab(tabId) {
+            const btn = document.getElementById(`btn-${tabId}`);
+            if (!btn) return; // Safety check
+
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const data = offerData[tabId];
+            document.getElementById('offer-title').textContent = data.title;
+            document.getElementById('offer-desc').textContent = data.desc;
+            document.getElementById('price-half').textContent = data.priceHalf;
+            document.getElementById('price-full').textContent = data.priceFull;
+            document.getElementById('row-half').style.display = data.showHalfRow ? 'flex' : 'none';
+            document.getElementById('label-full-title').textContent = data.fullTitle;
+            const fullSub = document.getElementById('label-full-sub');
+            fullSub.textContent = data.fullSub;
+            fullSub.style.display = data.fullSub ? 'block' : 'none';
+            document.getElementById('discovery-wrapper').style.display = data.showDiscovery ? 'flex' : 'none';
+            if (data.showDiscovery) document.getElementById('discovery-text').textContent = data.discoveryText;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            changeTab('ponctuel');
+        });
+    </script>
+</body>
+</html>
