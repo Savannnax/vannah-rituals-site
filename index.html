@@ -80,8 +80,8 @@
             
             <div class="hidden md:flex space-x-6 text-sm font-semibold text-[#5E2B0A]">
                 <a href="#experience" class="hover:text-[#230903] transition">L'Expérience</a>
-                <a href="#enaction" class="hover:text-[#230903] transition">En Action</a>
-                <a href="#offres" class="hover:text-[#230903] transition">Offres & Tarifs</a>
+                <a href="#enaction" class="hover:text-[#230903] transition">En action</a>
+                <a href="#offres" class="hover:text-[#230903] transition">Offres & tarifs</a>
                 <a href="#apropos" class="hover:text-[#230903] transition">À propos</a>
                 <a href="#contact" class="hover:text-[#230903] transition">Contact</a>
             </div>
@@ -130,7 +130,7 @@
                         </div>
                         <span class="bg-[#D3B88C] text-[#230903] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Personnalisable</span>
                     </div>
-                    <h3 class="text-xl font-bold text-[#230903] mb-3">Protocole Complet</h3>
+                    <h3 class="text-xl font-bold text-[#230903] mb-3">Protocole complet</h3>
                     <ul class="text-[#5E2B0A] space-y-2 text-sm">
                         <li>&#x2714; Massage du dos</li>
                         <li>&#x2714; Massage des trapèzes</li>
@@ -218,13 +218,13 @@
             <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
                 <div class="w-full p-8 md:p-12">
                     <div class="flex flex-col sm:flex-row gap-3 mb-8">
-                        <button onclick="changeTab('ponctuel')" id="btn-ponctuel" class="tab-btn active flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">Intervention Ponctuelle</button>
-                        <button onclick="changeTab('recurrent')" id="btn-recurrent" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">RDV Récurrent</button>
+                        <button onclick="changeTab('ponctuel')" id="btn-ponctuel" class="tab-btn active flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">Intervention ponctuelle</button>
+                        <button onclick="changeTab('recurrent')" id="btn-recurrent" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">RDV récurrent</button>
                         <button onclick="changeTab('seminaire')" id="btn-seminaire" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">Séminaires & QVT</button>
                     </div>
 
                     <div id="dynamic-content" class="fade-in">
-                        <h3 id="offer-title" class="text-2xl font-serif font-bold text-[#230903] mb-3">Intervention Ponctuelle</h3>
+                        <h3 id="offer-title" class="text-2xl font-serif font-bold text-[#230903] mb-3">Intervention ponctuelle</h3>
                         <p id="offer-desc" class="text-[#5E2B0A] mb-6">Description ici...</p>
                         
                         <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
@@ -240,7 +240,7 @@
 
                         <div id="discovery-wrapper" class="mt-4 flex justify-center">
                             <div id="discovery-badge" class="bg-[#D3B88C] text-[#230903] px-6 py-3 rounded-lg text-sm font-bold shadow-md">
-                                <span id="discovery-text">Offre Découverte (1ère fois) : 240€ la 1/2 journée / 420€ la journée</span>
+                                <span id="discovery-text">Offre découverte (1ère fois) : 240€ la 1/2 journée / 420€ la journée</span>
                             </div>
                         </div>
                     </div>
@@ -453,8 +453,8 @@
         });
 
         const offerData = {
-            ponctuel: { title: "Intervention Ponctuelle", desc: "Pour une occasion ponctuelle : féliciter une équipe après un succès, soulager une période chargée, ou simplement offrir une pause bien méritée.", priceHalf: "350 €", priceFull: "600 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: false },
-            recurrent: { title: "Rendez-vous Récurrent", desc: "Le choix le plus stratégique pour fidéliser vos talents. En instaurant un rendez-vous hebdomadaire ou mensuel, vous prévenez l'apparition des TMS avant qu'ils ne s'installent.", priceHalf: "300 €", priceFull: "550 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: true, discoveryText: "Offre Découverte (1ère fois) : 240€ (1/2 journée) / 420€ (journée)" },
+            ponctuel: { title: "Intervention ponctuelle", desc: "Pour une occasion ponctuelle : féliciter une équipe après un succès, soulager une période chargée, ou simplement offrir une pause bien méritée.", priceHalf: "350 €", priceFull: "600 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: false },
+            recurrent: { title: "Rendez-vous récurrent", desc: "Le choix le plus stratégique pour fidéliser vos talents. En instaurant un rendez-vous hebdomadaire ou mensuel, vous prévenez l'apparition des TMS avant qu'ils ne s'installent.", priceHalf: "300 €", priceFull: "550 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: true, discoveryText: "Offre découverte (1ère fois) : 240€ (1/2 journée) / 420€ (journée)" },
             seminaire: { title: "Séminaires & QVT", desc: "Pour vos grands événements : semaine QVT, séminaire d'entreprise, journée à thème. Une expérience bien-être pensée sur-mesure selon votre programme.", priceHalf: "Sur devis", priceFull: "Sur devis", fullTitle: "Journée complète", fullSub: "", showHalfRow: false, showDiscovery: false }
         };
 
