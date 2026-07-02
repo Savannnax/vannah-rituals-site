@@ -90,9 +90,28 @@
                 <a href="#apropos" class="hover:text-[#230903] transition">À propos</a>
                 <a href="#contact" class="hover:text-[#230903] transition">Contact</a>
             </div>
-            <a href="#contact" class="bg-[#230903] text-[#F4F2F3] px-5 py-2 rounded-full text-sm font-bold hover:bg-[#5E2B0A] transition">
-                Réserver
-            </a>
+
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="bg-[#230903] text-[#F4F2F3] px-5 py-2 rounded-full text-sm font-bold hover:bg-[#5E2B0A] transition">
+                    Réserver
+                </a>
+                <button id="burger-btn" onclick="toggleMenu()" aria-label="Menu" class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5">
+                    <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
+                    <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
+                    <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+            <div class="flex flex-col gap-4 text-sm font-semibold text-[#5E2B0A] pt-3 border-t border-[#CCB7A5]">
+                <a href="#experience" onclick="toggleMenu()" class="hover:text-[#230903] transition">L'Expérience</a>
+                <a href="#enaction" onclick="toggleMenu()" class="hover:text-[#230903] transition">En action</a>
+                <a href="#offres" onclick="toggleMenu()" class="hover:text-[#230903] transition">Offres & tarifs</a>
+                <a href="#apropos" onclick="toggleMenu()" class="hover:text-[#230903] transition">À propos</a>
+                <a href="#contact" onclick="toggleMenu()" class="hover:text-[#230903] transition">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -429,6 +448,23 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeMentions();
         });
+
+        // --- Menu burger mobile ---
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const lines = document.querySelectorAll('.burger-line');
+            const isOpen = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            if (!isOpen) {
+                lines[0].style.transform = 'translateY(8px) rotate(45deg)';
+                lines[1].style.opacity = '0';
+                lines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+            } else {
+                lines[0].style.transform = '';
+                lines[1].style.opacity = '';
+                lines[2].style.transform = '';
+            }
+        }
 
         // --- Carousel "En Action" ---
         let carouselIndex = 0;
