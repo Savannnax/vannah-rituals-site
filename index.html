@@ -262,7 +262,7 @@
                                 <div><span class="block text-sm font-bold uppercase text-[#5E2B0A] whitespace-nowrap">Demi-journée (4h)</span><span class="text-xs text-stone-500">Environ 10 personnes</span></div>
                                 <div class="text-2xl font-bold text-[#230903]" id="price-half">0 €</div>
                             </div>
-                            <div class="flex justify-between items-center">
+                            <div id="row-full" class="flex justify-between items-center">
                                 <div><span id="label-full-title" class="block text-sm font-bold uppercase text-[#5E2B0A] whitespace-nowrap">Journée complète (8h)</span><span id="label-full-sub" class="text-xs text-stone-500">Environ 20 personnes</span></div>
                                 <div class="text-2xl font-bold text-[#230903]" id="price-full">0 €</div>
                             </div>
@@ -523,7 +523,7 @@
 
             const labelTitle = document.getElementById('label-full-title');
             const fullSub = document.getElementById('label-full-sub');
-            const rowFull = document.querySelector('.flex.justify-between.items-center:not(#row-half)');
+            const rowFull = document.getElementById('row-full');
 
             if (data.fullTitle) {
                 labelTitle.textContent = data.fullTitle;
