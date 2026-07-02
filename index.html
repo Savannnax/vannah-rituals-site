@@ -235,11 +235,11 @@
                         
                         <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
                             <div id="row-half" class="flex justify-between items-center mb-4 border-b border-stone-200 pb-4">
-                                <div><span class="block text-sm font-bold uppercase text-[#5E2B0A]">Demi-journée (4h)</span><span class="text-xs text-stone-500">Environ 10 personnes</span></div>
+                                <div><span class="block text-sm font-bold uppercase text-[#5E2B0A] whitespace-nowrap">Demi-journée (4h)</span><span class="text-xs text-stone-500">Environ 10 personnes</span></div>
                                 <div class="text-2xl font-bold text-[#230903]" id="price-half">0 €</div>
                             </div>
                             <div class="flex justify-between items-center">
-                                <div><span id="label-full-title" class="block text-sm font-bold uppercase text-[#5E2B0A]">Journée complète (8h)</span><span id="label-full-sub" class="text-xs text-stone-500">Environ 20 personnes</span></div>
+                                <div><span id="label-full-title" class="block text-sm font-bold uppercase text-[#5E2B0A] whitespace-nowrap">Journée complète (8h)</span><span id="label-full-sub" class="text-xs text-stone-500">Environ 20 personnes</span></div>
                                 <div class="text-2xl font-bold text-[#230903]" id="price-full">0 €</div>
                             </div>
                         </div>
@@ -461,12 +461,12 @@
         const offerData = {
             ponctuel: { title: "Intervention ponctuelle", desc: "Pour une occasion ponctuelle : féliciter une équipe après un succès, soulager une période chargée, ou simplement offrir une pause bien méritée.", priceHalf: "350 €", priceFull: "600 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: false },
             recurrent: { title: "Rendez-vous récurrent", desc: "Le choix le plus stratégique pour fidéliser vos talents. En instaurant un rendez-vous hebdomadaire ou mensuel, vous prévenez l'apparition des TMS (Troubles Musculo-Squelettiques) avant qu'ils ne s'installent.", priceHalf: "300 €", priceFull: "550 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: true, discoveryText: "Offre découverte (1ère fois) : 240€ (1/2 journée) / 420€ (journée)" },
-            seminaire: { title: "Séminaires & QVT", desc: "Pour vos grands événements : semaine QVT (Qualité de Vie au Travail), séminaire d'entreprise, journée à thème. Une expérience bien-être pensée sur-mesure selon votre programme.", priceHalf: "Sur devis", priceFull: "Sur devis", fullTitle: "Journée complète", fullSub: "", showHalfRow: false, showDiscovery: false }
+            seminaire: { title: "Séminaires & QVT", desc: "Pour vos grands événements : semaine QVT (Qualité de Vie au Travail), séminaire d'entreprise, journée à thème. Une expérience bien-être pensée sur-mesure selon votre programme.", priceHalf: "Sur devis", priceFull: "Sur devis", fullTitle: "", fullSub: "", showHalfRow: false, showDiscovery: false }
         };
 
         function changeTab(tabId) {
             const btn = document.getElementById(`btn-${tabId}`);
-            if (!btn) return; // Safety check
+            if (!btn) return;
 
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -477,10 +477,29 @@
             document.getElementById('price-half').textContent = data.priceHalf;
             document.getElementById('price-full').textContent = data.priceFull;
             document.getElementById('row-half').style.display = data.showHalfRow ? 'flex' : 'none';
-            document.getElementById('label-full-title').textContent = data.fullTitle;
+
+            const labelTitle = document.getElementById('label-full-title');
             const fullSub = document.getElementById('label-full-sub');
-            fullSub.textContent = data.fullSub;
-            fullSub.style.display = data.fullSub ? 'block' : 'none';
+            const rowFull = document.querySelector('.flex.justify-between.items-center:not(#row-half)');
+
+            if (data.fullTitle) {
+                labelTitle.textContent = data.fullTitle;
+                labelTitle.style.display = 'block';
+                fullSub.textContent = data.fullSub;
+                fullSub.style.display = data.fullSub ? 'block' : 'none';
+                rowFull.classList.remove('justify-center');
+                rowFull.classList.add('justify-between');
+                const priceFull = document.getElementById('price-full');
+                priceFull.className = 'text-2xl font-bold text-[#230903]';
+            } else {
+                labelTitle.style.display = 'none';
+                fullSub.style.display = 'none';
+                rowFull.classList.remove('justify-between');
+                rowFull.classList.add('justify-center');
+                const priceFull = document.getElementById('price-full');
+                priceFull.className = 'text-sm font-bold uppercase text-[#5E2B0A] tracking-wider w-full text-center';
+            }
+
             document.getElementById('discovery-wrapper').style.display = data.showDiscovery ? 'flex' : 'none';
             if (data.showDiscovery) document.getElementById('discovery-text').textContent = data.discoveryText;
         }
