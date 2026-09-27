@@ -69,6 +69,70 @@
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Reviews side drawer */
+        .reviews-rail {
+            position: fixed;
+            top: 55%;
+            right: 0;
+            z-index: 60;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            box-shadow: 0 10px 30px rgba(35, 9, 3, 0.2);
+        }
+        .reviews-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 70;
+            background: rgba(35, 9, 3, 0.48);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .reviews-backdrop.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .reviews-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 80;
+            width: 430px;
+            max-width: 92%;
+            height: 100dvh;
+            overflow-x: hidden;
+            transform: translateX(100%);
+            transition: transform 0.35s ease;
+            box-shadow: -16px 0 45px rgba(35, 9, 3, 0.18);
+        }
+        .reviews-drawer.is-open {
+            transform: translateX(0);
+        }
+        .review-dot {
+            transition: width 0.25s ease, background-color 0.25s ease;
+        }
+        .review-dot.active {
+            width: 1.5rem;
+            background-color: #5E2B0A;
+        }
+        @media (max-width: 640px) {
+            .reviews-rail {
+                top: auto;
+                right: 1rem;
+                bottom: 1rem;
+                transform: none;
+                writing-mode: horizontal-tb;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reviews-backdrop,
+            .reviews-drawer,
+            .review-dot {
+                transition: none;
+            }
+        }
     </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
@@ -301,7 +365,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#230903] mb-4">Confiance & sérieux</h2>
                 <p class="text-[#5E2B0A] max-w-2xl mx-auto leading-relaxed">
-                    Vannah Rituals est une activité en plein développement à Montpellier. Pas encore de longue liste d'avis en ligne, mais des bases professionnelles solides et un vrai engagement qualité à chaque intervention.
+                    Découvrez les premiers retours de collaborateurs massés par Vannah Rituals, ainsi que les engagements qui accompagnent chaque intervention.
                 </p>
             </div>
 
@@ -354,17 +418,43 @@
                 </a>
             </div>
 
-            <!--
-                TEMOIGNAGE — à activer dès qu'un accord écrit est obtenu (ex: retour CSE Teads).
-                Décommenter ce bloc et remplacer le texte/nom/entreprise entre crochets.
-
-                <div class="mt-12 max-w-2xl mx-auto bg-white p-8 rounded-2xl border border-[#CCB7A5] text-center">
-                    <p class="text-[#230903] text-lg italic leading-relaxed mb-4">"[Citation du témoignage]"</p>
-                    <p class="text-sm font-bold text-[#5E2B0A]">— [Prénom], [Entreprise]</p>
-                </div>
-            -->
         </div>
     </section>
+
+    <!-- Reviews side drawer -->
+    <button id="reviews-rail" type="button" onclick="openReviews()" class="reviews-rail bg-[#5E2B0A] text-[#F4F2F3] px-3 py-5 sm:px-3 sm:py-6 rounded-l-2xl sm:rounded-l-2xl rounded-r-none font-bold text-sm tracking-wide hover:bg-[#230903] transition" aria-controls="reviews-drawer" aria-expanded="false">
+        <span class="hidden sm:inline">Avis clients</span>
+        <span class="sm:hidden">Avis</span>
+    </button>
+
+    <div id="reviews-backdrop" class="reviews-backdrop" onclick="closeReviews()" aria-hidden="true"></div>
+
+    <aside id="reviews-drawer" class="reviews-drawer bg-[#F4F2F3] flex flex-col" role="dialog" aria-modal="true" aria-labelledby="reviews-title" aria-hidden="true">
+        <div class="flex items-start justify-between gap-4 px-6 pt-7 pb-5 border-b border-[#CCB7A5]">
+            <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#5E2B0A] mb-2">Vos retours</p>
+                <h2 id="reviews-title" class="text-2xl sm:text-3xl font-serif font-bold text-[#230903]">Ce sont elles et eux qui en parlent</h2>
+            </div>
+            <button id="reviews-close" type="button" onclick="closeReviews()" aria-label="Fermer les avis" class="shrink-0 w-10 h-10 rounded-full border border-[#CCB7A5] text-[#230903] text-2xl leading-none hover:bg-white transition">&times;</button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto px-6 py-7">
+            <div id="review-content" aria-live="polite"></div>
+
+            <div id="review-controls" class="hidden w-full items-center justify-between mt-6">
+                <button type="button" onclick="moveReview(-1)" aria-label="Avis précédent" class="w-11 h-11 rounded-full border border-[#5E2B0A] text-[#5E2B0A] text-2xl hover:bg-[#5E2B0A] hover:text-white transition">&#8249;</button>
+                <div id="review-dots" class="flex items-center gap-2" aria-label="Navigation entre les avis"></div>
+                <button type="button" onclick="moveReview(1)" aria-label="Avis suivant" class="w-11 h-11 rounded-full border border-[#5E2B0A] text-[#5E2B0A] text-2xl hover:bg-[#5E2B0A] hover:text-white transition">&#8250;</button>
+            </div>
+        </div>
+
+        <div class="px-6 py-6 bg-white border-t border-[#CCB7A5]">
+            <p class="text-sm text-[#5E2B0A] mb-4">Vous avez vécu l’expérience Vannah Rituals ? Votre retour compte beaucoup.</p>
+            <a href="https://forms.gle/AAj5Hh5r4xPhiNe28" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-[#230903] text-[#F4F2F3] px-6 py-3 rounded-full font-bold hover:bg-[#5E2B0A] transition">
+                Laisser un avis
+            </a>
+        </div>
+    </aside>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 bg-[#230903] text-[#F4F2F3] text-center">
@@ -438,6 +528,97 @@
     </div>
 
     <script>
+        // --- Reviews side drawer ---
+        // Avis publiés avec l'autorisation de leurs auteurs.
+        const reviews = [
+            {
+                name: "Matthieu",
+                company: "Teads",
+                text: "Un instant suspendu dans la journée pour souffler et repartir à nouveau ! Vannah Rituals est très pro, les massages sont vraiment bien et font du bien !"
+            },
+            {
+                name: "Olivier",
+                company: "Teads",
+                text: "Massages très agréables et efficaces."
+            }
+        ];
+        let reviewIndex = 0;
+        let reviewsLastFocusedElement = null;
+
+        function renderReview() {
+            const content = document.getElementById('review-content');
+            const controls = document.getElementById('review-controls');
+            const dots = document.getElementById('review-dots');
+
+            if (!reviews.length) {
+                content.innerHTML = `
+                    <div class="bg-white rounded-3xl border border-[#CCB7A5] p-7 text-center shadow-sm">
+                        <div class="font-serif text-[#D3B88C] text-5xl leading-none mb-4" aria-hidden="true">“</div>
+                        <p class="font-serif text-xl text-[#230903] mb-3">Les premiers témoignages arrivent bientôt.</p>
+                        <p class="text-sm leading-relaxed text-[#5E2B0A]">Chaque avis publié ici aura été partagé avec l’accord de son auteur.</p>
+                    </div>`;
+                controls.classList.add('hidden');
+                controls.classList.remove('flex');
+                return;
+            }
+
+            const review = reviews[reviewIndex];
+            const attribution = [review.name, review.company].filter(Boolean).join(' · ');
+            content.innerHTML = `
+                <article class="bg-white rounded-3xl border border-[#CCB7A5] p-7 shadow-sm fade-in">
+                    <div class="font-serif text-[#D3B88C] text-5xl leading-none mb-2" aria-hidden="true">“</div>
+                    <blockquote class="font-serif text-xl leading-relaxed text-[#230903]">“${escapeReviewText(review.text)}”</blockquote>
+                    ${attribution ? `<p class="mt-6 text-sm font-bold text-[#5E2B0A]">— ${escapeReviewText(attribution)}</p>` : ''}
+                </article>`;
+
+            controls.classList.toggle('hidden', reviews.length < 2);
+            controls.classList.toggle('flex', reviews.length >= 2);
+            dots.innerHTML = reviews.map((_, index) => `
+                <button type="button" onclick="goToReview(${index})" class="review-dot h-2.5 w-2.5 rounded-full bg-[#CCB7A5] ${index === reviewIndex ? 'active' : ''}" aria-label="Afficher l’avis ${index + 1}" ${index === reviewIndex ? 'aria-current="true"' : ''}></button>
+            `).join('');
+        }
+
+        function escapeReviewText(value) {
+            const element = document.createElement('div');
+            element.textContent = value;
+            return element.innerHTML;
+        }
+
+        function openReviews() {
+            reviewsLastFocusedElement = document.activeElement;
+            document.getElementById('reviews-drawer').classList.add('is-open');
+            document.getElementById('reviews-backdrop').classList.add('is-open');
+            document.getElementById('reviews-drawer').setAttribute('aria-hidden', 'false');
+            document.getElementById('reviews-backdrop').setAttribute('aria-hidden', 'false');
+            document.getElementById('reviews-rail').setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+            renderReview();
+            document.getElementById('reviews-close').focus();
+        }
+
+        function closeReviews() {
+            const drawer = document.getElementById('reviews-drawer');
+            if (!drawer.classList.contains('is-open')) return;
+            drawer.classList.remove('is-open');
+            document.getElementById('reviews-backdrop').classList.remove('is-open');
+            drawer.setAttribute('aria-hidden', 'true');
+            document.getElementById('reviews-backdrop').setAttribute('aria-hidden', 'true');
+            document.getElementById('reviews-rail').setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            if (reviewsLastFocusedElement) reviewsLastFocusedElement.focus();
+        }
+
+        function moveReview(direction) {
+            if (!reviews.length) return;
+            reviewIndex = (reviewIndex + direction + reviews.length) % reviews.length;
+            renderReview();
+        }
+
+        function goToReview(index) {
+            reviewIndex = index;
+            renderReview();
+        }
+
         // --- Mentions légales modal ---
         function openMentions() {
             document.getElementById('mentions-overlay').classList.remove('hidden');
@@ -446,7 +627,10 @@
             document.getElementById('mentions-overlay').classList.add('hidden');
         }
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeMentions();
+            if (e.key === 'Escape') {
+                closeMentions();
+                closeReviews();
+            }
         });
 
         // --- Menu burger mobile ---
