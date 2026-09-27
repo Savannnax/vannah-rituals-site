@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Soins particuliers — Vannah Rituals</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coffee: #230903;
+            --walnut: #5E2B0A;
+            --clay: #9D5B38;
+            --sand: #D3B88C;
+            --oak: #CCB7A5;
+            --smoke: #F4F2F3;
+            --cream: #FBF8F4;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--coffee);
+        }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        .hero-glow {
+            background:
+                radial-gradient(circle at 10% 15%, rgba(211, 184, 140, .35), transparent 28%),
+                radial-gradient(circle at 88% 12%, rgba(204, 183, 165, .4), transparent 25%),
+                linear-gradient(145deg, #FBF8F4 0%, #F3E9E1 100%);
+        }
+        .care-card {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: 390px;
+            display: flex;
+            align-items: flex-end;
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+        .care-card::before {
+            content: "";
+            position: absolute;
+            inset: -5px;
+            z-index: -2;
+            background: var(--care-image) center / cover no-repeat;
+            filter: blur(1.5px) saturate(.82);
+            transform: scale(1.035);
+            transition: transform .55s ease, filter .55s ease;
+        }
+        .care-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(180deg, rgba(35, 9, 3, .12) 4%, rgba(35, 9, 3, .38) 48%, rgba(35, 9, 3, .94) 100%);
+        }
+        .care-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 45px rgba(35, 9, 3, .1);
+            border-color: var(--sand);
+        }
+        .care-card:hover::before {
+            filter: blur(.5px) saturate(.95);
+            transform: scale(1.075);
+        }
+        .care-card-button {
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+        .care-card-button:focus-visible {
+            outline: 3px solid var(--sand);
+            outline-offset: 4px;
+        }
+        .modal-panel {
+            animation: modal-in .35s ease both;
+        }
+        .protocol-list li {
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .protocol-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: .58rem;
+            width: .4rem;
+            height: .4rem;
+            border-radius: 999px;
+            background: var(--clay);
+        }
+        @keyframes modal-in {
+            from { opacity: 0; transform: translateY(24px) scale(.985); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .arch-image {
+            border-radius: 12rem 12rem 2rem 2rem;
+        }
+        .soft-shadow { box-shadow: 0 22px 60px rgba(35, 9, 3, .13); }
+        .eyebrow { letter-spacing: .2em; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .care-card { transition: none; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="sticky top-0 z-50 border-b border-[#CCB7A5]/40" style="background: rgba(251,248,244,.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
+        <div class="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center gap-3 shrink-0">
+                <img src="logo.png" alt="Logo Vannah Rituals" class="h-14 w-14 rounded-full object-cover border border-[#CCB7A5]">
+                <span class="font-serif text-[#5E2B0A] text-lg leading-tight">Vannah<br>Rituals</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-7 text-sm font-bold text-[#5E2B0A]">
+                <a href="index.html" class="hover:text-[#230903] transition">Entreprises</a>
+                <a href="#soins" class="hover:text-[#230903] transition">Les soins</a>
+                <a href="#experience" class="hover:text-[#230903] transition">L’expérience</a>
+                <a href="#reservation" class="hover:text-[#230903] transition">Réservation</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="#reservation" class="bg-[#230903] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#5E2B0A] transition">Réserver</a>
+                <button id="care-menu-button" type="button" onclick="toggleCareMenu()" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5" aria-label="Ouvrir le menu" aria-controls="care-mobile-menu" aria-expanded="false">
+                    <span class="care-menu-line block w-6 h-0.5 bg-[#230903] transition"></span>
+                    <span class="care-menu-line block w-6 h-0.5 bg-[#230903] transition"></span>
+                    <span class="care-menu-line block w-6 h-0.5 bg-[#230903] transition"></span>
+                </button>
+            </div>
+        </div>
+
+        <div id="care-mobile-menu" class="hidden md:hidden px-4 pb-4">
+            <div class="flex flex-col gap-4 pt-4 border-t border-[#CCB7A5] text-sm font-bold text-[#5E2B0A]">
+                <a href="index.html">Entreprises</a>
+                <a href="#soins" onclick="toggleCareMenu()">Les soins</a>
+                <a href="#experience" onclick="toggleCareMenu()">L’expérience</a>
+                <a href="#reservation" onclick="toggleCareMenu()">Réservation</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="hero-glow overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-[1.05fr_.95fr] gap-12 md:gap-16 items-center">
+                <div>
+                    <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-5">Soins particuliers · Montpellier</p>
+                    <h1 class="text-5xl md:text-7xl leading-[1.02] text-[#230903] mb-6">
+                        Votre parenthèse,<br><span class="italic font-normal text-[#5E2B0A]">rien que pour vous.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-[#5E2B0A] leading-relaxed max-w-xl mb-8">
+                        Des soins personnalisés pour relâcher les tensions, révéler l’éclat de votre peau et vous offrir une vraie parenthèse de reconnexion.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="#soins" class="bg-[#230903] text-white px-7 py-3.5 rounded-full font-bold text-center hover:bg-[#5E2B0A] transition">Découvrir les soins</a>
+                        <a href="#reservation" class="border-2 border-[#5E2B0A] text-[#5E2B0A] px-7 py-3 rounded-full font-bold text-center hover:bg-white transition">Réserver bientôt sur Planity</a>
+                    </div>
+                </div>
+
+                <div class="relative max-w-md mx-auto md:max-w-none w-full">
+                    <div class="absolute -left-5 top-16 w-24 h-24 rounded-full bg-[#D3B88C]/60"></div>
+                    <div class="absolute -right-5 bottom-12 w-36 h-36 rounded-full border border-[#9D5B38]/35"></div>
+                    <div class="relative arch-image overflow-hidden aspect-[4/5] soft-shadow border-4 border-white">
+                        <img src="savannah-massage.jpg" alt="Savannah, praticienne Vannah Rituals" class="w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 p-6 pt-20 text-white" style="background: linear-gradient(transparent, rgba(35,9,3,.8));">
+                            <p class="font-serif text-2xl">Une attention entièrement personnalisée</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="soins" class="py-20 md:py-28 px-4 bg-[#F4F2F3]">
+            <div class="max-w-6xl mx-auto">
+                <div class="max-w-2xl mb-12 md:mb-16">
+                    <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">La carte des soins</p>
+                    <h2 class="text-4xl md:text-5xl text-[#230903] mb-5">Choisissez votre soin</h2>
+                    <p class="text-[#5E2B0A] leading-relaxed">Chaque soin pourra être proposé en plusieurs durées et adapté à vos besoins du moment.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-5 md:gap-7">
+                    <button id="massage-card" type="button" class="care-card care-card-button border border-white/40 rounded-3xl p-7 md:p-9 text-white" style="--care-image: url('care-massage.webp');" onclick="openMassageModal()" aria-haspopup="dialog" aria-controls="massage-modal">
+                        <div>
+                        <div class="w-14 h-14 rounded-2xl bg-white/85 text-[#5E2B0A] flex items-center justify-center mb-7 backdrop-blur-sm">
+                            <svg viewBox="0 0 48 48" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 27c3-8 6-12 10-12 5 0 7 5 12 5 3 0 5-2 7-5M8 35c7-3 12-4 17-2 7 3 11 2 15-2"/><path d="M15 24c-2 2-4 5-5 8M29 17c1-4 3-7 6-9"/></svg>
+                        </div>
+                        <p class="text-xs uppercase tracking-[.16em] font-bold text-[#F3E9E1] mb-2">Corps</p>
+                        <h3 class="text-3xl text-white mb-3">Massage personnalisé</h3>
+                        <p class="text-white/85 leading-relaxed mb-7">Un massage construit autour de vos tensions et de l’énergie dont vous avez besoin : profondément relaxant ou plus tonique.</p>
+                        <p class="text-sm font-bold text-white">Voir les soins et tarifs →</p>
+                        </div>
+                    </button>
+
+                    <button id="facial-card" type="button" class="care-card care-card-button border border-white/40 rounded-3xl p-7 md:p-9 text-white" style="--care-image: url('care-facial.webp');" onclick="openFacialModal()" aria-haspopup="dialog" aria-controls="facial-modal">
+                        <div>
+                        <div class="w-14 h-14 rounded-2xl bg-white/85 text-[#5E2B0A] flex items-center justify-center mb-7 backdrop-blur-sm">
+                            <svg viewBox="0 0 48 48" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6c-8 0-14 7-14 17 0 11 6 19 14 19s14-8 14-19C38 13 32 6 24 6Z"/><path d="M17 22h3M28 22h3M20 31c2.5 2 5.5 2 8 0M24 24v3"/></svg>
+                        </div>
+                        <p class="text-xs uppercase tracking-[.16em] font-bold text-[#F3E9E1] mb-2">Visage</p>
+                        <h3 class="text-3xl text-white mb-3">Soin visage</h3>
+                        <p class="text-white/85 leading-relaxed mb-7">Un protocole adapté à votre peau, pensé pour apporter confort, éclat et détente dans un même soin.</p>
+                        <p class="text-sm font-bold text-white">Voir les soins et tarifs →</p>
+                        </div>
+                    </button>
+
+                    <button id="aqua-glow-card" type="button" class="care-card care-card-button border border-white/40 rounded-3xl p-7 md:p-9 text-white" style="--care-image: url('care-aqua-glow.webp');" onclick="openAquaGlowModal()" aria-haspopup="dialog" aria-controls="aqua-glow-modal">
+                        <div>
+                        <div class="w-14 h-14 rounded-2xl bg-white/85 text-[#5E2B0A] flex items-center justify-center mb-7 backdrop-blur-sm">
+                            <svg viewBox="0 0 48 48" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6S13 19 13 29a11 11 0 0 0 22 0C35 19 24 6 24 6Z"/><path d="M18 30c1 4 3 6 7 7"/></svg>
+                        </div>
+                        <p class="text-xs uppercase tracking-[.16em] font-bold text-[#F3E9E1] mb-2">Éclat & hydratation</p>
+                        <h3 class="text-3xl text-white mb-3">Aqua Glow</h3>
+                        <p class="text-white/85 leading-relaxed mb-7">Un soin complet qui associe nettoyage, exfoliation douce et hydratation pour révéler une peau fraîche et lumineuse.</p>
+                        <p class="text-sm font-bold text-white">Voir le soin et le tarif →</p>
+                        </div>
+                    </button>
+
+                    <article class="care-card border border-white/40 rounded-3xl p-7 md:p-9 text-white" style="--care-image: url('care-headspa.webp');">
+                        <div>
+                        <div class="w-14 h-14 rounded-2xl bg-white/85 text-[#5E2B0A] flex items-center justify-center mb-7 backdrop-blur-sm">
+                            <svg viewBox="0 0 48 48" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 29c3-9 8-14 14-14s11 5 14 14"/><path d="M8 34c4-2 7-2 11 0s7 2 11 0 7-2 10 0M17 13c2-4 4-6 7-7M29 13c1-3 3-5 5-6"/></svg>
+                        </div>
+                        <p class="text-xs uppercase tracking-[.16em] font-bold text-[#F3E9E1] mb-2">En projet</p>
+                        <h3 class="text-3xl text-white mb-3">Head Spa</h3>
+                        <p class="text-white/85 leading-relaxed mb-7">Une future expérience enveloppante autour du cuir chevelu, imaginée pour offrir détente et lâcher-prise.</p>
+                        <p class="text-sm font-bold text-white">Future expérience · Disponibilité à venir</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 md:py-28 px-4 bg-white">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-[.85fr_1.15fr] gap-12 lg:gap-20 items-center">
+                <div>
+                    <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Votre rendez-vous</p>
+                    <h2 class="text-4xl md:text-5xl text-[#230903] mb-5">Tout est pensé pour que vous puissiez ralentir.</h2>
+                    <p class="text-[#5E2B0A] leading-relaxed">De la réservation au dernier geste du soin, l’expérience reste simple, chaleureuse et entièrement tournée vers votre bien-être.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex gap-5 p-6 rounded-2xl bg-[#F4F2F3] border border-[#CCB7A5]">
+                        <span class="shrink-0 w-10 h-10 rounded-full bg-[#5E2B0A] text-white flex items-center justify-center font-bold">1</span>
+                        <div><h3 class="text-xl font-bold mb-1">Choisissez votre soin</h3><p class="text-[#5E2B0A] text-sm leading-relaxed">Découvrez les différentes prestations, leurs durées et leurs bienfaits.</p></div>
+                    </div>
+                    <div class="flex gap-5 p-6 rounded-2xl bg-[#F4F2F3] border border-[#CCB7A5]">
+                        <span class="shrink-0 w-10 h-10 rounded-full bg-[#5E2B0A] text-white flex items-center justify-center font-bold">2</span>
+                        <div><h3 class="text-xl font-bold mb-1">Réservez sur Planity</h3><p class="text-[#5E2B0A] text-sm leading-relaxed">Sélectionnez librement le créneau qui vous convient, à toute heure.</p></div>
+                    </div>
+                    <div class="flex gap-5 p-6 rounded-2xl bg-[#F4F2F3] border border-[#CCB7A5]">
+                        <span class="shrink-0 w-10 h-10 rounded-full bg-[#5E2B0A] text-white flex items-center justify-center font-bold">3</span>
+                        <div><h3 class="text-xl font-bold mb-1">Profitez pleinement</h3><p class="text-[#5E2B0A] text-sm leading-relaxed">Recevez les informations pratiques puis laissez-vous porter le jour du rendez-vous.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reservation" class="py-20 md:py-28 px-4 bg-[#230903] text-white overflow-hidden">
+            <div class="max-w-5xl mx-auto relative text-center">
+                <div class="absolute -top-28 -left-28 w-64 h-64 rounded-full border border-[#D3B88C]/25"></div>
+                <div class="absolute -bottom-40 -right-24 w-80 h-80 rounded-full bg-[#5E2B0A]/45"></div>
+                <div class="relative">
+                    <p class="eyebrow text-xs font-bold uppercase text-[#D3B88C] mb-4">Ouverture prévue au printemps 2027</p>
+                    <h2 class="text-4xl md:text-6xl mb-6">Votre prochain moment de bien-être se prépare.</h2>
+                    <p class="text-[#CCB7A5] max-w-2xl mx-auto leading-relaxed mb-7">La réservation ouvrira prochainement sur Planity pour choisir votre soin et votre créneau en toute simplicité.</p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-7 text-sm text-white/85 mb-9">
+                        <span>Montpellier Sud · Adresse communiquée après réservation</span>
+                        <span class="hidden sm:block text-[#D3B88C]" aria-hidden="true">•</span>
+                        <span>Lun–Ven 10 h–19 h · Sam–Dim 10 h–12 h</span>
+                    </div>
+                    <span class="inline-flex items-center justify-center bg-[#D3B88C] text-[#230903] px-8 py-4 rounded-full font-bold opacity-75 cursor-not-allowed" aria-disabled="true">Réserver sur Planity — bientôt</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="massage-modal" class="hidden fixed inset-0 z-[100] p-0 sm:p-5 md:p-8" role="dialog" aria-modal="true" aria-labelledby="massage-modal-title">
+        <button type="button" class="absolute inset-0 w-full h-full bg-[#170602]/70 backdrop-blur-sm" onclick="closeMassageModal()" aria-label="Fermer la fiche massage"></button>
+
+        <div class="modal-panel relative bg-[#FBF8F4] w-full max-w-6xl h-full sm:h-auto sm:max-h-[calc(100vh-2.5rem)] md:max-h-[calc(100vh-4rem)] mx-auto sm:rounded-[2rem] overflow-y-auto soft-shadow">
+            <button id="massage-modal-close" type="button" onclick="closeMassageModal()" class="sticky top-4 float-right mr-4 sm:mr-5 z-20 w-11 h-11 rounded-full bg-white/95 text-[#230903] shadow-lg flex items-center justify-center hover:bg-[#F3E9E1] transition" aria-label="Fermer">
+                <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+
+            <div class="grid lg:grid-cols-[.78fr_1.22fr]">
+                <div class="relative min-h-[340px] lg:min-h-0 lg:h-[calc(100vh-4rem)] lg:max-h-[900px] lg:sticky lg:top-0 lg:self-start overflow-hidden">
+                    <img src="care-massage.webp" alt="Ambiance chaleureuse pour un massage personnalisé" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#230903]/95 via-[#230903]/35 to-transparent"></div>
+                    <div class="relative min-h-[340px] lg:min-h-0 lg:h-full flex items-end p-7 md:p-10 text-white">
+                        <div>
+                            <p class="eyebrow text-xs font-bold uppercase text-[#F3E9E1] mb-3">L’expérience corps</p>
+                            <h2 id="massage-modal-title" class="text-4xl md:text-5xl mb-4">Massage personnalisé</h2>
+                            <p class="text-white/85 leading-relaxed max-w-md">Un soin entièrement adapté à vos tensions, à vos envies et à l’énergie dont vous avez besoin le jour du rendez-vous.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 sm:p-8 md:p-11 lg:p-12 clear-both">
+                    <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Choisissez votre durée</p>
+                    <h3 class="text-3xl md:text-4xl text-[#230903] mb-3">Une même expérience, trois façons de ralentir.</h3>
+                    <p class="text-[#5E2B0A] leading-relaxed mb-8">Chaque séance commence par un court échange pour cibler vos besoins et ajuster les pressions.</p>
+
+                    <div class="grid md:grid-cols-3 gap-3 mb-10">
+                        <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5">
+                            <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-2">Le Ciblé</p>
+                            <p class="font-serif text-3xl text-[#230903] mb-1">45 min</p>
+                            <p class="text-2xl font-bold text-[#5E2B0A] mb-3">55 €</p>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Un travail approfondi sur 2 à 3 zones choisies ensemble.</p>
+                        </div>
+                        <div class="rounded-2xl border-2 border-[#9D5B38] bg-[#F3E9E1] p-5 relative">
+                            <span class="absolute -top-3 left-5 bg-[#9D5B38] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Le plus populaire</span>
+                            <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-2">L’Équilibre</p>
+                            <p class="font-serif text-3xl text-[#230903] mb-1">1 h</p>
+                            <p class="text-2xl font-bold text-[#5E2B0A] mb-3">70 €</p>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Une séance équilibrée, personnalisée selon les tensions du moment.</p>
+                        </div>
+                        <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5">
+                            <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-2">La Plénitude</p>
+                            <p class="font-serif text-3xl text-[#230903] mb-1">1 h 30</p>
+                            <p class="text-2xl font-bold text-[#5E2B0A] mb-3">100 €</p>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Un massage complet pour une détente profonde et durable.</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-[#CCB7A5] pt-9">
+                        <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Vos rendez-vous réguliers</p>
+                        <h3 class="text-3xl text-[#230903] mb-6">Les cartes de massages</h3>
+
+                        <div class="grid md:grid-cols-2 gap-4 mb-8">
+                            <div class="rounded-2xl bg-white border border-[#CCB7A5] p-6">
+                                <div class="flex items-start justify-between gap-4 mb-5">
+                                    <div><p class="font-serif text-2xl text-[#230903]">Carte 3 massages</p><p class="text-sm text-[#9D5B38]">Valable 4 mois</p></div>
+                                    <span class="text-xs font-bold bg-[#F3E9E1] text-[#5E2B0A] px-3 py-1.5 rounded-full whitespace-nowrap">– 15 €</span>
+                                </div>
+                                <div class="space-y-3 text-sm text-[#5E2B0A]">
+                                    <div class="flex justify-between gap-4"><span>3 × 45 min</span><strong class="text-[#230903]">150 €</strong></div>
+                                    <div class="flex justify-between gap-4"><span>3 × 1 h</span><strong class="text-[#230903]">195 €</strong></div>
+                                    <div class="flex justify-between gap-4"><span>3 × 1 h 30</span><strong class="text-[#230903]">285 €</strong></div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-2xl bg-[#230903] text-white p-6">
+                                <div class="flex items-start justify-between gap-4 mb-5">
+                                    <div><p class="font-serif text-2xl">Carte 5 massages</p><p class="text-sm text-[#D3B88C]">Valable 7 mois</p></div>
+                                    <span class="text-xs font-bold bg-[#D3B88C] text-[#230903] px-3 py-1.5 rounded-full whitespace-nowrap">Rendez-vous régulier</span>
+                                </div>
+                                <div class="space-y-3 text-sm text-white/85">
+                                    <div class="flex justify-between gap-4"><span>5 × 45 min</span><strong class="text-white">250 €</strong></div>
+                                    <div class="flex justify-between gap-4"><span>5 × 1 h</span><strong class="text-white">325 €</strong></div>
+                                    <div class="flex justify-between gap-4"><span>5 × 1 h 30</span><strong class="text-white">475 €</strong></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-2xl bg-[#F3E9E1] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-8">
+                            <div>
+                                <p class="font-serif text-2xl text-[#230903] mb-1">Envie de l’offrir ?</p>
+                                <p class="text-sm text-[#5E2B0A]">Chaque durée pourra aussi être proposée sous forme de carte cadeau valable 12 mois.</p>
+                            </div>
+                            <span class="shrink-0 text-sm font-bold text-[#5E2B0A]">Carte personnalisée · Bientôt</span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <span class="inline-flex items-center justify-center bg-[#230903] text-white px-7 py-3.5 rounded-full font-bold opacity-75 cursor-not-allowed" aria-disabled="true">Réserver bientôt sur Planity</span>
+                            <span class="inline-flex items-center justify-center border-2 border-[#5E2B0A] text-[#5E2B0A] px-7 py-3 rounded-full font-bold opacity-75 cursor-not-allowed" aria-disabled="true">Offrir ce massage — bientôt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="facial-modal" class="hidden fixed inset-0 z-[100] p-0 sm:p-5 md:p-8" role="dialog" aria-modal="true" aria-labelledby="facial-modal-title">
+        <button type="button" class="absolute inset-0 w-full h-full bg-[#170602]/70 backdrop-blur-sm" onclick="closeFacialModal()" aria-label="Fermer la fiche soin visage"></button>
+
+        <div class="modal-panel relative bg-[#FBF8F4] w-full max-w-6xl h-full sm:h-auto sm:max-h-[calc(100vh-2.5rem)] md:max-h-[calc(100vh-4rem)] mx-auto sm:rounded-[2rem] overflow-y-auto soft-shadow">
+            <button id="facial-modal-close" type="button" onclick="closeFacialModal()" class="sticky top-4 float-right mr-4 sm:mr-5 z-20 w-11 h-11 rounded-full bg-white/95 text-[#230903] shadow-lg flex items-center justify-center hover:bg-[#F3E9E1] transition" aria-label="Fermer">
+                <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+
+            <div class="grid lg:grid-cols-[.78fr_1.22fr]">
+                <div class="relative min-h-[340px] lg:min-h-0 lg:h-[calc(100vh-4rem)] lg:max-h-[900px] lg:sticky lg:top-0 lg:self-start overflow-hidden">
+                    <img src="care-facial.webp" alt="Ambiance douce pour un soin du visage" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#230903]/95 via-[#230903]/30 to-transparent"></div>
+                    <div class="relative min-h-[340px] lg:min-h-0 lg:h-full flex items-end p-7 md:p-10 text-white">
+                        <div>
+                            <p class="eyebrow text-xs font-bold uppercase text-[#F3E9E1] mb-3">L’expérience visage</p>
+                            <h2 id="facial-modal-title" class="text-4xl md:text-5xl mb-4">Soin visage</h2>
+                            <p class="text-white/85 leading-relaxed max-w-md">Un moment personnalisé pour nettoyer, réconforter et révéler l’éclat naturel de votre peau.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 sm:p-8 md:p-11 lg:p-12 clear-both">
+                    <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Choisissez votre soin</p>
+                    <h3 class="text-3xl md:text-4xl text-[#230903] mb-3">Une attention adaptée à votre peau et à votre rythme.</h3>
+                    <p class="text-[#5E2B0A] leading-relaxed mb-8">Les produits, les textures et le masque sont choisis selon les besoins observés le jour du rendez-vous.</p>
+
+                    <div class="grid md:grid-cols-3 gap-3 mb-9">
+                        <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5">
+                            <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-2">La Fraîcheur</p>
+                            <p class="font-serif text-3xl text-[#230903] mb-1">30 min</p>
+                            <p class="text-2xl font-bold text-[#5E2B0A] mb-3">45 €</p>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Pour rafraîchir, hydrater et retrouver une peau lumineuse en peu de temps.</p>
+                        </div>
+                        <div class="rounded-2xl border-2 border-[#9D5B38] bg-[#F3E9E1] p-5 relative">
+                            <span class="absolute -top-3 left-5 bg-[#9D5B38] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Le plus populaire</span>
+                            <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-2">L’Harmonie</p>
+                            <p class="font-serif text-3xl text-[#230903] mb-1">1 h</p>
+                            <p class="text-2xl font-bold text-[#5E2B0A] mb-3">70 €</p>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Un soin complet qui associe beauté de la peau et détente profonde.</p>
+                        </div>
+                        <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5">
+                            <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-2">L’Absolu</p>
+                            <p class="font-serif text-3xl text-[#230903] mb-1">1 h 30</p>
+                            <p class="text-2xl font-bold text-[#5E2B0A] mb-3">100 €</p>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Une expérience enveloppante pour prendre soin du visage et relâcher tout le haut du corps.</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-[#CCB7A5] pt-9">
+                        <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Le protocole en détail</p>
+
+                        <div class="space-y-3 mb-8">
+                            <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5 sm:p-6">
+                                <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
+                                    <div class="sm:w-32 shrink-0"><p class="font-serif text-xl text-[#230903]">30 minutes</p></div>
+                                    <ul class="protocol-list text-sm leading-relaxed text-[#5E2B0A] space-y-1.5">
+                                        <li>Lait nettoyant</li>
+                                        <li>Gommage doux</li>
+                                        <li>Masque hydratant</li>
+                                        <li>Massage crânien pendant la pose</li>
+                                        <li>Sérum, contour des yeux et crème de jour</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5 sm:p-6">
+                                <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
+                                    <div class="sm:w-32 shrink-0"><p class="font-serif text-xl text-[#230903]">1 heure</p></div>
+                                    <ul class="protocol-list text-sm leading-relaxed text-[#5E2B0A] space-y-1.5">
+                                        <li>Observation des besoins de la peau</li>
+                                        <li>Nettoyage et gommage doux</li>
+                                        <li>Massage du visage, du cou, du décolleté et des trapèzes</li>
+                                        <li>Masque ciblé : purifiant, apaisant, nourrissant ou hydratant</li>
+                                        <li>Massage crânien et soins de finition</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5 sm:p-6">
+                                <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
+                                    <div class="sm:w-32 shrink-0"><p class="font-serif text-xl text-[#230903]">1 h 30</p></div>
+                                    <ul class="protocol-list text-sm leading-relaxed text-[#5E2B0A] space-y-1.5">
+                                        <li>Observation complète des besoins de la peau</li>
+                                        <li>Nettoyage et gommage adaptés</li>
+                                        <li>Massage prolongé du visage, du cou, du décolleté et des trapèzes</li>
+                                        <li>Massage des bras et des mains</li>
+                                        <li>Double masque ciblé puis hydratant</li>
+                                        <li>Massage crânien et soins de finition</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-[#5E2B0A] bg-[#F3E9E1] rounded-2xl px-5 py-4 mb-8"><strong class="text-[#230903]">Une attention dans chaque soin :</strong> les serviettes chaudes accompagnent tous les soins visage, quelle que soit leur durée.</p>
+
+                        <div class="rounded-2xl bg-white border border-[#CCB7A5] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-8">
+                            <div>
+                                <p class="font-serif text-2xl text-[#230903] mb-1">Un soin à offrir</p>
+                                <p class="text-sm text-[#5E2B0A]">Les trois durées pourront être choisies en carte cadeau, valable 12 mois.</p>
+                            </div>
+                            <span class="shrink-0 text-sm font-bold text-[#9D5B38]">Carte personnalisée · Bientôt</span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <span class="inline-flex items-center justify-center bg-[#230903] text-white px-7 py-3.5 rounded-full font-bold opacity-75 cursor-not-allowed" aria-disabled="true">Réserver bientôt sur Planity</span>
+                            <span class="inline-flex items-center justify-center border-2 border-[#5E2B0A] text-[#5E2B0A] px-7 py-3 rounded-full font-bold opacity-75 cursor-not-allowed" aria-disabled="true">Offrir ce soin — bientôt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="aqua-glow-modal" class="hidden fixed inset-0 z-[100] p-0 sm:p-5 md:p-8" role="dialog" aria-modal="true" aria-labelledby="aqua-glow-modal-title">
+        <button type="button" class="absolute inset-0 w-full h-full bg-[#170602]/70 backdrop-blur-sm" onclick="closeAquaGlowModal()" aria-label="Fermer la fiche Aqua Glow"></button>
+
+        <div class="modal-panel relative bg-[#FBF8F4] w-full max-w-6xl h-full sm:h-auto sm:max-h-[calc(100vh-2.5rem)] md:max-h-[calc(100vh-4rem)] mx-auto sm:rounded-[2rem] overflow-y-auto soft-shadow">
+            <button id="aqua-glow-modal-close" type="button" onclick="closeAquaGlowModal()" class="sticky top-4 float-right mr-4 sm:mr-5 z-20 w-11 h-11 rounded-full bg-white/95 text-[#230903] shadow-lg flex items-center justify-center hover:bg-[#F3E9E1] transition" aria-label="Fermer">
+                <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+
+            <div class="grid lg:grid-cols-[.78fr_1.22fr]">
+                <div class="relative min-h-[340px] lg:min-h-0 lg:h-[calc(100vh-4rem)] lg:max-h-[900px] lg:sticky lg:top-0 lg:self-start overflow-hidden">
+                    <img src="care-aqua-glow.webp" alt="Ambiance lumineuse du soin Aqua Glow" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#230903]/95 via-[#230903]/30 to-transparent"></div>
+                    <div class="relative min-h-[340px] lg:min-h-0 lg:h-full flex items-end p-7 md:p-10 text-white">
+                        <div>
+                            <p class="eyebrow text-xs font-bold uppercase text-[#F3E9E1] mb-3">L’expérience éclat</p>
+                            <h2 id="aqua-glow-modal-title" class="text-4xl md:text-5xl mb-4">Aqua Glow</h2>
+                            <p class="text-white/85 leading-relaxed max-w-md">Un soin complet pour retrouver une peau nette, confortable et naturellement lumineuse.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 sm:p-8 md:p-11 lg:p-12 clear-both">
+                    <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Le soin coup d’éclat</p>
+                    <h3 class="text-3xl md:text-4xl text-[#230903] mb-3">Nettoyer, exfolier et hydrater en profondeur.</h3>
+                    <p class="text-[#5E2B0A] leading-relaxed mb-7">Chaque étape est ajustée au confort et aux besoins observés le jour du rendez-vous.</p>
+
+                    <div class="rounded-2xl border-2 border-[#9D5B38] bg-[#F3E9E1] p-6 mb-9 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-1">Aqua Glow</p>
+                            <p class="font-serif text-3xl text-[#230903]">1 h 15</p>
+                        </div>
+                        <p class="text-3xl font-bold text-[#5E2B0A]">90 €</p>
+                    </div>
+
+                    <div class="border-t border-[#CCB7A5] pt-9">
+                        <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Les bénéfices</p>
+                        <ul class="grid auto-rows-fr sm:grid-cols-2 gap-3 text-sm leading-relaxed text-[#5E2B0A] mb-9">
+                            <li class="flex h-full min-h-[104px] items-center gap-3 rounded-2xl border border-[#CCB7A5]/70 bg-white p-4">
+                                <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#F3E9E1] text-[#9D5B38]" aria-hidden="true">✓</span>
+                                <span>Nettoie la peau en profondeur</span>
+                            </li>
+                            <li class="flex h-full min-h-[104px] items-center gap-3 rounded-2xl border border-[#CCB7A5]/70 bg-white p-4">
+                                <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#F3E9E1] text-[#9D5B38]" aria-hidden="true">✓</span>
+                                <span>Élimine en douceur les cellules mortes et les impuretés de surface</span>
+                            </li>
+                            <li class="flex h-full min-h-[104px] items-center gap-3 rounded-2xl border border-[#CCB7A5]/70 bg-white p-4">
+                                <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#F3E9E1] text-[#9D5B38]" aria-hidden="true">✓</span>
+                                <span>Aide à désincruster les pores et à affiner visuellement le grain de peau</span>
+                            </li>
+                            <li class="flex h-full min-h-[104px] items-center gap-3 rounded-2xl border border-[#CCB7A5]/70 bg-white p-4">
+                                <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#F3E9E1] text-[#9D5B38]" aria-hidden="true">✓</span>
+                                <span>Apporte hydratation, confort et souplesse</span>
+                            </li>
+                            <li class="flex h-full min-h-[104px] items-center gap-3 rounded-2xl border border-[#CCB7A5]/70 bg-white p-4">
+                                <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#F3E9E1] text-[#9D5B38]" aria-hidden="true">✓</span>
+                                <span>Ravive l’éclat pour un teint plus frais</span>
+                            </li>
+                            <li class="flex h-full min-h-[104px] items-center gap-3 rounded-2xl border border-[#CCB7A5]/70 bg-white p-4">
+                                <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#F3E9E1] text-[#9D5B38]" aria-hidden="true">✓</span>
+                                <span>Prépare la peau à mieux recevoir sa routine de soin</span>
+                            </li>
+                        </ul>
+
+                        <div class="rounded-3xl border border-[#D3B88C] bg-gradient-to-br from-[#F3E9E1] to-white p-6 sm:p-8 mb-8">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
+                                <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38]">Le bon rythme</p>
+                                <span class="self-start sm:self-auto rounded-full bg-[#9D5B38] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white">4 fois par an</span>
+                            </div>
+                            <h4 class="font-serif text-3xl text-[#230903] mb-2">Un rendez-vous à chaque saison</h4>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A] mb-6">Idéalement au changement de saison, pour accompagner la peau tout au long de l’année.</p>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-6" aria-label="Printemps, été, automne et hiver">
+                                <div class="rounded-2xl border border-[#CCB7A5]/70 bg-white p-3 text-center">
+                                    <span class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-[#F3E9E1] font-serif text-[#9D5B38]">P</span>
+                                    <span class="text-xs font-bold text-[#5E2B0A]">Printemps</span>
+                                </div>
+                                <div class="rounded-2xl border border-[#CCB7A5]/70 bg-white p-3 text-center">
+                                    <span class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-[#E8D2AE] font-serif text-[#5E2B0A]">É</span>
+                                    <span class="text-xs font-bold text-[#5E2B0A]">Été</span>
+                                </div>
+                                <div class="rounded-2xl border border-[#CCB7A5]/70 bg-white p-3 text-center">
+                                    <span class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-[#D9B49F] font-serif text-[#5E2B0A]">A</span>
+                                    <span class="text-xs font-bold text-[#5E2B0A]">Automne</span>
+                                </div>
+                                <div class="rounded-2xl border border-[#CCB7A5]/70 bg-white p-3 text-center">
+                                    <span class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-[#E8E1DC] font-serif text-[#5E2B0A]">H</span>
+                                    <span class="text-xs font-bold text-[#5E2B0A]">Hiver</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="rounded-2xl bg-white border border-[#CCB7A5] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-8">
+                            <div>
+                                <p class="font-serif text-2xl text-[#230903] mb-1">Un soin à offrir</p>
+                                <p class="text-sm text-[#5E2B0A]">Aqua Glow pourra aussi être choisi en carte cadeau, valable 12 mois.</p>
+                            </div>
+                            <span class="shrink-0 text-sm font-bold text-[#9D5B38]">Carte personnalisée · Bientôt</span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <span class="inline-flex items-center justify-center bg-[#230903] text-white px-7 py-3.5 rounded-full font-bold opacity-75 cursor-not-allowed" aria-disabled="true">Réserver bientôt sur Planity</span>
+                            <span class="inline-flex items-center justify-center border-2 border-[#5E2B0A] text-[#5E2B0A] px-7 py-3 rounded-full font-bold opacity-75 cursor-not-allowed" aria-disabled="true">Offrir ce soin — bientôt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-[#170602] text-[#CCB7A5] px-4 py-8">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+            <p>© 2026 Vannah Rituals — SIRET 913 830 154 00013</p>
+            <div class="flex flex-wrap items-center justify-center gap-5">
+                <a href="index.html" class="hover:text-white transition">Offres pour les entreprises</a>
+                <a href="mailto:contact@vannahrituals.fr" class="hover:text-white transition">Contact</a>
+                <a href="index.html#mentions-legales" class="hover:text-white transition">Mentions légales</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let massageModalTrigger = null;
+
+        function toggleCareMenu() {
+            const menu = document.getElementById('care-mobile-menu');
+            const button = document.getElementById('care-menu-button');
+            const lines = document.querySelectorAll('.care-menu-line');
+            const opening = menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            button.setAttribute('aria-expanded', String(opening));
+            if (opening) {
+                lines[0].style.transform = 'translateY(8px) rotate(45deg)';
+                lines[1].style.opacity = '0';
+                lines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+            } else {
+                lines.forEach(line => { line.style.transform = ''; line.style.opacity = ''; });
+            }
+        }
+
+        function openMassageModal() {
+            const modal = document.getElementById('massage-modal');
+            massageModalTrigger = document.activeElement;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('massage-modal-close').focus();
+        }
+
+        function closeMassageModal() {
+            const modal = document.getElementById('massage-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            if (massageModalTrigger) massageModalTrigger.focus();
+        }
+
+        let facialModalTrigger = null;
+
+        function openFacialModal() {
+            const modal = document.getElementById('facial-modal');
+            facialModalTrigger = document.activeElement;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('facial-modal-close').focus();
+        }
+
+        function closeFacialModal() {
+            const modal = document.getElementById('facial-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            if (facialModalTrigger) facialModalTrigger.focus();
+        }
+
+        let aquaGlowModalTrigger = null;
+
+        function openAquaGlowModal() {
+            const modal = document.getElementById('aqua-glow-modal');
+            aquaGlowModalTrigger = document.activeElement;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('aqua-glow-modal-close').focus();
+        }
+
+        function closeAquaGlowModal() {
+            const modal = document.getElementById('aqua-glow-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            if (aquaGlowModalTrigger) aquaGlowModalTrigger.focus();
+        }
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                if (!document.getElementById('aqua-glow-modal').classList.contains('hidden')) closeAquaGlowModal();
+                else if (!document.getElementById('facial-modal').classList.contains('hidden')) closeFacialModal();
+                else if (!document.getElementById('massage-modal').classList.contains('hidden')) closeMassageModal();
+            }
+        });
+    </script>
+</body>
+</html>

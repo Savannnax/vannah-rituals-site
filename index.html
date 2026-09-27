@@ -145,17 +145,18 @@
                 <span class="font-serif font-normal text-[#5E2B0A] text-lg leading-tight">Vannah<br>Rituals</span>
             </a>
             
-            <div class="hidden md:flex space-x-6 text-sm font-semibold text-[#5E2B0A]">
+            <div class="hidden md:flex items-center gap-4 lg:gap-6 text-xs lg:text-sm font-semibold text-[#5E2B0A]">
                 <a href="#experience" class="hover:text-[#230903] transition">L'Expérience</a>
                 <a href="#enaction" class="hover:text-[#230903] transition">En action</a>
                 <a href="#offres" class="hover:text-[#230903] transition">Offres & tarifs</a>
+                <a href="soins.html" class="hover:text-[#230903] transition">Soins particuliers</a>
                 <a href="#apropos" class="hover:text-[#230903] transition">À propos</a>
                 <a href="#contact" class="hover:text-[#230903] transition">Contact</a>
             </div>
 
             <div class="flex items-center gap-3">
                 <a href="#contact" class="bg-[#230903] text-[#F4F2F3] px-5 py-2 rounded-full text-sm font-bold hover:bg-[#5E2B0A] transition">
-                    Réserver
+                    Demander un devis
                 </a>
                 <button id="burger-btn" onclick="toggleMenu()" aria-label="Menu" class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5">
                     <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
@@ -171,6 +172,7 @@
                 <a href="#experience" onclick="toggleMenu()" class="hover:text-[#230903] transition">L'Expérience</a>
                 <a href="#enaction" onclick="toggleMenu()" class="hover:text-[#230903] transition">En action</a>
                 <a href="#offres" onclick="toggleMenu()" class="hover:text-[#230903] transition">Offres & tarifs</a>
+                <a href="soins.html" class="hover:text-[#230903] transition">Soins particuliers</a>
                 <a href="#apropos" onclick="toggleMenu()" class="hover:text-[#230903] transition">À propos</a>
                 <a href="#contact" onclick="toggleMenu()" class="hover:text-[#230903] transition">Contact</a>
             </div>
@@ -190,17 +192,33 @@
                 Interventions de massages sur chaise ergonomique à Montpellier et ses alentours. 
                 Réduisez le stress, soulagez les tensions et boostez l'énergie de vos équipes directement sur leur lieu de travail.
             </p>
-            <a href="#offres" class="inline-block bg-[#5E2B0A] text-[#F4F2F3] px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:bg-[#230903] transition transform hover:-translate-y-1">
-                Découvrir les offres
-            </a>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="#offres" class="inline-block bg-[#5E2B0A] text-[#F4F2F3] px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:bg-[#230903] transition transform hover:-translate-y-1">
+                    Découvrir les offres
+                </a>
+                <a href="soins.html" class="inline-block border-2 border-[#5E2B0A] text-[#5E2B0A] px-8 py-3.5 rounded-full text-lg font-bold hover:bg-[#F4F2F3] transition">
+                    Je suis un particulier
+                </a>
+            </div>
         </div>
     </header>
+
+    <section class="border-y border-[#CCB7A5]/60 bg-[#FBF8F4] px-4 py-8" aria-label="Soins pour les particuliers">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div class="max-w-3xl">
+                <p class="text-xs font-bold uppercase tracking-[.18em] text-[#9D5B38] mb-2">Aussi pour les particuliers</p>
+                <h2 class="font-serif text-2xl md:text-3xl text-[#230903] mb-2">Massages et soins personnalisés à Montpellier.</h2>
+                <p class="text-sm md:text-base text-[#5E2B0A] leading-relaxed">Découvrez le massage personnalisé, les soins visage et Aqua Glow dans un espace entièrement dédié à votre bien-être.</p>
+            </div>
+            <a href="soins.html" class="shrink-0 inline-flex items-center justify-center rounded-full bg-[#230903] px-6 py-3 text-sm font-bold text-white hover:bg-[#5E2B0A] transition">Découvrir les soins →</a>
+        </div>
+    </section>
 
     <!-- The Experience Section -->
     <section id="experience" class="py-20 px-4">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#230903] mb-4">Un rituel pensé pour l'entreprise</h2>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#230903] mb-4">Une expérience pensée pour l'entreprise</h2>
                 <p class="text-[#5E2B0A] max-w-2xl mx-auto">Le massage assis se pratique habillé, sans huile sur le corps, et s'intègre parfaitement dans une journée de travail (15 à 20 minutes par personne).</p>
             </div>
 
@@ -351,7 +369,7 @@
                 <h2 class="text-3xl font-serif font-bold text-[#230903] mb-6">Mon engagement</h2>
                 <p class="text-[#5E2B0A] mb-4 leading-relaxed font-bold text-xl">Transformer vos pauses en moments de reconnexion.</p>
                 <p class="text-[#5E2B0A] mb-4 leading-relaxed">Passionnée par le lien corps-esprit, j’ai fondé Vannah Rituals pour faire du bien-être un moteur de performance durable.</p>
-                <p class="text-[#5E2B0A] mb-4 leading-relaxed">Diplômée en massage, je transforme chaque intervention en véritable rituel sensoriel : huiles essentielles, ambiance sonore et attention aux détails.</p>
+                <p class="text-[#5E2B0A] mb-4 leading-relaxed">Diplômée en massage, je transforme chaque intervention en véritable expérience sensorielle : huiles essentielles, ambiance sonore et attention aux détails.</p>
                 <p class="text-[#5E2B0A] leading-relaxed">Mon objectif ? Que chaque collaborateur reprenne son poste serein et reboosté.</p>
             </div>
         </div>
@@ -386,7 +404,7 @@
                         </svg>
                     </div>
                     <p class="text-sm font-bold text-[#230903] mb-1">Matériel pro</p>
-                    <p class="text-xs text-[#5E2B0A]">Chaise ergonomique & rituel complet</p>
+                    <p class="text-xs text-[#5E2B0A]">Chaise ergonomique & protocole complet</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl border border-[#CCB7A5] text-center">
                     <div class="text-[#5E2B0A] flex justify-center mb-3">
@@ -673,6 +691,10 @@
         function closeMentions() {
             document.getElementById('mentions-overlay').classList.add('hidden');
         }
+        if (window.location.hash === '#mentions-legales') openMentions();
+        window.addEventListener('hashchange', () => {
+            if (window.location.hash === '#mentions-legales') openMentions();
+        });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeMentions();
