@@ -117,18 +117,6 @@
             width: 1.5rem;
             background-color: #5E2B0A;
         }
-        .mobile-reviews summary {
-            list-style: none;
-        }
-        .mobile-reviews summary::-webkit-details-marker {
-            display: none;
-        }
-        .mobile-reviews-chevron {
-            transition: transform 0.25s ease;
-        }
-        .mobile-reviews[open] .mobile-reviews-chevron {
-            transform: rotate(180deg);
-        }
         @media (max-width: 639px) {
             .reviews-rail,
             .reviews-backdrop,
@@ -428,15 +416,15 @@
                 </a>
             </div>
 
-            <details class="mobile-reviews sm:hidden mt-5 max-w-2xl mx-auto bg-white rounded-2xl border border-[#CCB7A5] shadow-sm overflow-hidden">
-                <summary class="flex items-center justify-between gap-4 px-5 py-4 font-bold text-[#5E2B0A] cursor-pointer select-none">
-                    <span>Voir les avis clients</span>
-                    <svg class="mobile-reviews-chevron w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="m6 9 6 6 6-6"/>
-                    </svg>
-                </summary>
-                <div id="mobile-review-list" class="px-4 pb-4 space-y-4 border-t border-[#CCB7A5]"></div>
-            </details>
+            <div class="sm:hidden mt-8 max-w-2xl mx-auto text-left">
+                <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-[#5E2B0A] mb-3">Avis clients</p>
+                <div id="mobile-review-content" aria-live="polite"></div>
+                <div id="mobile-review-controls" class="flex items-center justify-between mt-4 px-2">
+                    <button type="button" onclick="moveMobileReview(-1)" aria-label="Avis précédent" class="w-10 h-10 rounded-full border border-[#5E2B0A] text-[#5E2B0A] text-2xl hover:bg-[#5E2B0A] hover:text-white transition">&#8249;</button>
+                    <div id="mobile-review-dots" class="flex items-center gap-2" aria-label="Navigation entre les avis"></div>
+                    <button type="button" onclick="moveMobileReview(1)" aria-label="Avis suivant" class="w-10 h-10 rounded-full border border-[#5E2B0A] text-[#5E2B0A] text-2xl hover:bg-[#5E2B0A] hover:text-white transition">&#8250;</button>
+                </div>
+            </div>
 
         </div>
     </section>
@@ -598,19 +586,38 @@
             `).join('');
         }
 
-        function renderMobileReviews() {
-            const list = document.getElementById('mobile-review-list');
-            if (!list) return;
+        let mobileReviewIndex = 0;
 
-            list.innerHTML = reviews.map(review => {
-                const attribution = [review.name, review.company].filter(Boolean).join(' · ');
-                return `
-                    <article class="first:mt-4 bg-[#F4F2F3] rounded-2xl border border-[#CCB7A5] p-5">
-                        <div class="font-serif text-[#D3B88C] text-4xl leading-none mb-1" aria-hidden="true">“</div>
-                        <blockquote class="font-serif text-lg leading-relaxed text-[#230903]">“${escapeReviewText(review.text)}”</blockquote>
-                        ${attribution ? `<p class="mt-4 text-sm font-bold text-[#5E2B0A]">— ${escapeReviewText(attribution)}</p>` : ''}
-                    </article>`;
-            }).join('');
+        function renderMobileReview() {
+            const content = document.getElementById('mobile-review-content');
+            const controls = document.getElementById('mobile-review-controls');
+            const dots = document.getElementById('mobile-review-dots');
+            if (!content || !controls || !dots || !reviews.length) return;
+
+            const review = reviews[mobileReviewIndex];
+            const attribution = [review.name, review.company].filter(Boolean).join(' · ');
+            content.innerHTML = `
+                <article class="bg-white rounded-2xl border border-[#CCB7A5] p-6 shadow-sm fade-in">
+                    <div class="font-serif text-[#D3B88C] text-4xl leading-none mb-1" aria-hidden="true">“</div>
+                    <blockquote class="font-serif text-lg leading-relaxed text-[#230903]">“${escapeReviewText(review.text)}”</blockquote>
+                    ${attribution ? `<p class="mt-5 text-sm font-bold text-[#5E2B0A]">— ${escapeReviewText(attribution)}</p>` : ''}
+                </article>`;
+
+            controls.classList.toggle('hidden', reviews.length < 2);
+            controls.classList.toggle('flex', reviews.length >= 2);
+            dots.innerHTML = reviews.map((_, index) => `
+                <button type="button" onclick="goToMobileReview(${index})" class="review-dot h-2.5 w-2.5 rounded-full bg-[#CCB7A5] ${index === mobileReviewIndex ? 'active' : ''}" aria-label="Afficher l’avis ${index + 1}" ${index === mobileReviewIndex ? 'aria-current="true"' : ''}></button>
+            `).join('');
+        }
+
+        function moveMobileReview(direction) {
+            mobileReviewIndex = (mobileReviewIndex + direction + reviews.length) % reviews.length;
+            renderMobileReview();
+        }
+
+        function goToMobileReview(index) {
+            mobileReviewIndex = index;
+            renderMobileReview();
         }
 
         function escapeReviewText(value) {
@@ -654,7 +661,7 @@
             renderReview();
         }
 
-        document.addEventListener('DOMContentLoaded', renderMobileReviews);
+        document.addEventListener('DOMContentLoaded', renderMobileReview);
         window.addEventListener('resize', () => {
             if (window.innerWidth < 640) closeReviews();
         });
