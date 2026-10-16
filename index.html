@@ -4,20 +4,49 @@
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="LYEiuaU_QpU-b1Ifx8Jq64RU4XnI3LTm5hK-FZSsNag" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vannah Rituals - Massages Bien-Être en Entreprise à Montpellier</title>
+    <title>Massage assis en entreprise à Montpellier | Vannah Rituals</title>
+    <link rel="canonical" href="https://vannahrituals.fr/">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
 
     <!-- SEO -->
-    <meta name="description" content="Massages assis en entreprise à Montpellier et alentours. Vannah Rituals accompagne vos équipes avec des interventions sur chaise ergonomique, ponctuelles ou récurrentes, pour réduire le stress et prévenir les TMS au travail.">
+    <meta name="description" content="Massage assis en entreprise à Montpellier et alentours : séances de 15 à 20 minutes, habillé, sur chaise ergonomique. Découvrez les formats et tarifs de Vannah Rituals.">
 
     <!-- Open Graph (aperçu sur réseaux sociaux / messageries) -->
-    <meta property="og:title" content="Vannah Rituals - Massages Bien-Être en Entreprise à Montpellier">
+    <meta property="og:title" content="Massage assis en entreprise à Montpellier | Vannah Rituals">
     <meta property="og:description" content="Offrez une pause bien-être à vos collaborateurs : massages sur chaise ergonomique, directement sur leur lieu de travail.">
-    <meta property="og:image" content="https://savannnax.github.io/vannah-rituals-site/savannah-massage.jpg">
-    <meta property="og:url" content="https://savannnax.github.io/vannah-rituals-site/">
+    <meta property="og:image" content="https://vannahrituals.fr/savannah-massage.jpg">
+    <meta property="og:image:alt" content="Savannah, praticienne Vannah Rituals, pendant un massage assis en entreprise">
+    <meta property="og:url" content="https://vannahrituals.fr/">
+    <meta property="og:locale" content="fr_FR">
     <meta property="og:type" content="website">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://vannahrituals.fr/#organization",
+                "name": "Vannah Rituals",
+                "url": "https://vannahrituals.fr/",
+                "logo": "https://vannahrituals.fr/logo.png",
+                "telephone": "+33695785259",
+                "email": "contact@vannahrituals.fr"
+            },
+            {
+                "@type": "Service",
+                "@id": "https://vannahrituals.fr/#massage-entreprise",
+                "name": "Massage assis en entreprise à Montpellier",
+                "serviceType": "Massage assis en entreprise",
+                "url": "https://vannahrituals.fr/",
+                "provider": { "@id": "https://vannahrituals.fr/#organization" },
+                "areaServed": { "@type": "City", "name": "Montpellier" },
+                "description": "Séances de massage assis de 15 à 20 minutes, habillé, sur chaise ergonomique, directement dans les locaux de l'entreprise."
+            }
+        ]
+    }
+    </script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,6 +67,9 @@
         h1, h2, h3, .font-serif {
             font-family: 'Playfair Display', serif;
         }
+        [hidden] { display: none !important; }
+        section[id] { scroll-margin-top: 5.5rem; }
+        :focus-visible { outline: 3px solid #9D5B38; outline-offset: 4px; }
 
         /* Custom Tab Styling */
         .tab-btn {
@@ -133,13 +165,19 @@
             }
         }
     </style>
+    <noscript>
+        <style>
+            #mobile-menu { display: block; }
+            #burger-btn, #reviews-rail { display: none; }
+        </style>
+    </noscript>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 
     <!-- Navigation -->
     <nav class="sticky top-0 z-50" style="background: rgba(244, 242, 243, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(204, 183, 165, 0.3); box-shadow: 0 2px 16px rgba(35, 9, 3, 0.06);">
         <div class="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3">
+            <a href="/" class="flex items-center gap-3">
                 <img src="logo.png" 
                      alt="Logo Vannah Rituals" 
                      class="h-14 w-14 rounded-full object-cover border border-[#CCB7A5]">
@@ -159,7 +197,7 @@
                 <a href="#contact" class="bg-[#230903] text-[#F4F2F3] px-5 py-2 rounded-full text-sm font-bold hover:bg-[#5E2B0A] transition">
                     Demander un devis
                 </a>
-                <button id="burger-btn" onclick="toggleMenu()" aria-label="Menu" class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5">
+                <button id="burger-btn" type="button" onclick="toggleMenu()" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5">
                     <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
                     <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
                     <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
@@ -187,10 +225,10 @@
         <div class="relative z-10 max-w-4xl mx-auto">
             
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#230903] mb-6 leading-tight">
-                Offrez une pause bien-être <br/> à vos collaborateurs
+                Massage assis en entreprise <br/> à Montpellier
             </h1>
             <p class="text-lg md:text-xl text-[#230903] opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Réduisez le stress, soulagez les tensions et boostez l'énergie de vos équipes directement sur leur lieu de travail.
+                Offrez une pause bien-être à vos collaborateurs, directement sur leur lieu de travail, à Montpellier et alentours. Des séances de 15 à 20 minutes, habillé, sur chaise ergonomique.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a href="#offres" class="inline-block bg-[#5E2B0A] text-[#F4F2F3] px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:bg-[#230903] transition transform hover:-translate-y-1">
@@ -206,9 +244,9 @@
     <section class="border-y border-[#CCB7A5]/60 bg-[#FBF8F4] px-4 py-8" aria-label="Soins pour les particuliers">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div class="max-w-3xl">
-                <p class="text-xs font-bold uppercase tracking-[.18em] text-[#9D5B38] mb-2">Aussi pour les particuliers</p>
+                <p class="text-xs font-bold uppercase tracking-[.18em] text-[#9D5B38] mb-2">Particuliers · Ouverture prévue au printemps 2027</p>
                 <h2 class="font-serif text-2xl md:text-3xl text-[#230903] mb-2">Massages et soins personnalisés à Montpellier.</h2>
-                <p class="text-sm md:text-base text-[#5E2B0A] leading-relaxed">Découvrez le massage personnalisé, les soins visage et Aqua Glow dans un espace entièrement dédié à votre bien-être.</p>
+                <p class="text-sm md:text-base text-[#5E2B0A] leading-relaxed">Découvrez les soins en préparation : massage personnalisé, soins visage et Aqua Glow. Les réservations ouvriront prochainement.</p>
             </div>
             <a href="soins.html" class="shrink-0 inline-flex items-center justify-center rounded-full bg-[#230903] px-6 py-3 text-sm font-bold text-white hover:bg-[#5E2B0A] transition">Découvrir les soins →</a>
         </div>
@@ -261,7 +299,7 @@
                         <li>&#x2714; Musique relaxante</li>
                         <li>&#x2714; Subtiles notes d'huiles essentielles</li>
                         <li>&#x2714; Crème hydratante</li>
-                        <li>&#x2714; Shot détox <span class="text-xs opacity-75">(jus frais préparé maison, servi bien frais)</span></li>
+                        <li>&#x2714; Jus frais <span class="text-xs opacity-75">(préparé maison, servi bien frais)</span></li>
                     </ul>
                 </div>
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-[#CCB7A5] hover:shadow-md transition">
@@ -270,15 +308,15 @@
                             <path d="M3 18h5l3-8 4 16 4-12 3 4h11"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-[#230903] mb-3">Bénéfices immédiats</h3>
+                    <h3 class="text-xl font-bold text-[#230903] mb-3">Une pause pour vos équipes</h3>
                     <ul class="text-[#5E2B0A] space-y-2 text-sm mb-4">
-                        <li>&#x2714; Relâchement des tensions musculo-squelettiques (TMS)</li>
-                        <li>&#x2714; Diminution de la fatigue mentale</li>
-                        <li>&#x2714; Regain de concentration</li>
+                        <li>&#x2714; Un temps consacré à la détente</li>
+                        <li>&#x2714; Une parenthèse dans la journée de travail</li>
+                        <li>&#x2714; Une attention portée au confort de chacun</li>
                     </ul>
                     <div class="border-l-4 border-[#D3B88C] pl-3">
-                        <p class="text-[#230903] text-sm font-semibold mb-1">Impact Employeur :</p>
-                        <p class="text-[#5E2B0A] text-xs">C'est un puissant levier de reconnaissance. Le collaborateur se sent valorisé par sa direction, renforçant la cohésion d'équipe.</p>
+                        <p class="text-[#230903] text-sm font-semibold mb-1">Pour l'entreprise :</p>
+                        <p class="text-[#5E2B0A] text-xs">Une façon concrète de remercier vos collaborateurs et de leur accorder un moment de bien-être sur leur lieu de travail.</p>
                     </div>
                 </div>
             </div>
@@ -327,34 +365,75 @@
 
             <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
                 <div class="w-full p-8 md:p-12">
-                    <div class="flex flex-col sm:flex-row gap-3 mb-8">
-                        <button onclick="changeTab('ponctuel')" id="btn-ponctuel" class="tab-btn active flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">Intervention ponctuelle</button>
-                        <button onclick="changeTab('recurrent')" id="btn-recurrent" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">RDV récurrent</button>
-                        <button onclick="changeTab('seminaire')" id="btn-seminaire" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">Séminaires & QVT</button>
+                    <div id="offer-tabs" hidden class="flex flex-col sm:flex-row gap-3 mb-8">
+                        <button type="button" id="btn-ponctuel" data-offer="ponctuel" class="tab-btn active flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">Intervention ponctuelle</button>
+                        <button type="button" id="btn-recurrent" data-offer="recurrent" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">RDV récurrent</button>
+                        <button type="button" id="btn-seminaire" data-offer="seminaire" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-sm text-center">Séminaires & QVT</button>
                     </div>
 
-                    <div id="dynamic-content" class="fade-in">
-                        <h3 id="offer-title" class="text-2xl font-serif font-bold text-[#230903] mb-3">Intervention ponctuelle</h3>
-                        <p id="offer-desc" class="text-[#5E2B0A] mb-6">Description ici...</p>
-                        
+                    <p class="text-sm text-[#5E2B0A] mb-8">Séances individuelles de 15 à 20 minutes. Formats de présence sur site : 4 h pour environ 10 personnes ou 8 h pour environ 20 personnes.</p>
+
+                    <article id="offer-ponctuel" class="offer-panel fade-in mb-8">
+                        <h3 class="text-2xl font-serif font-bold text-[#230903] mb-3">Intervention ponctuelle</h3>
+                        <p class="text-[#5E2B0A] mb-6">Pour une occasion ponctuelle : féliciter une équipe après un succès, accompagner une période chargée, ou simplement offrir une pause bien méritée.</p>
                         <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
-                            <div id="row-half" class="flex justify-between items-center mb-4 border-b border-stone-200 pb-4">
-                                <div><span class="block text-sm font-bold uppercase text-[#5E2B0A] whitespace-nowrap">Demi-journée (4h)</span><span class="text-xs text-stone-500">Environ 10 personnes</span></div>
-                                <div class="text-2xl font-bold text-[#230903]" id="price-half">0 €</div>
+                            <div class="flex flex-wrap gap-3 justify-between items-center mb-4 border-b border-stone-200 pb-4">
+                                <div><span class="block text-sm font-bold uppercase text-[#5E2B0A]">Demi-journée (4 h)</span><span class="text-xs text-stone-500">Environ 10 personnes</span></div>
+                                <p class="text-2xl font-bold text-[#230903]">350 €</p>
                             </div>
-                            <div id="row-full" class="flex justify-between items-center">
-                                <div><span id="label-full-title" class="block text-sm font-bold uppercase text-[#5E2B0A] whitespace-nowrap">Journée complète (8h)</span><span id="label-full-sub" class="text-xs text-stone-500">Environ 20 personnes</span></div>
-                                <div class="text-2xl font-bold text-[#230903]" id="price-full">0 €</div>
+                            <div class="flex flex-wrap gap-3 justify-between items-center">
+                                <div><span class="block text-sm font-bold uppercase text-[#5E2B0A]">Journée complète (8 h)</span><span class="text-xs text-stone-500">Environ 20 personnes</span></div>
+                                <p class="text-2xl font-bold text-[#230903]">600 €</p>
                             </div>
                         </div>
+                    </article>
 
-                        <div id="discovery-wrapper" class="mt-4 flex justify-center">
-                            <div id="discovery-badge" class="border-2 border-[#5E2B0A] text-[#5E2B0A] px-6 py-3 rounded-full text-sm font-bold">
-                                <span id="discovery-text">Offre découverte (1ère fois) : 240€ la 1/2 journée / 420€ la journée</span>
+                    <article id="offer-recurrent" class="offer-panel fade-in mb-8">
+                        <h3 class="text-2xl font-serif font-bold text-[#230903] mb-3">Rendez-vous récurrent</h3>
+                        <p class="text-[#5E2B0A] mb-6">Installez une pause bien-être régulière dans la vie de votre équipe. La fréquence des interventions est à définir ensemble selon votre organisation.</p>
+                        <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+                            <div class="flex flex-wrap gap-3 justify-between items-center mb-4 border-b border-stone-200 pb-4">
+                                <div><span class="block text-sm font-bold uppercase text-[#5E2B0A]">Demi-journée (4 h)</span><span class="text-xs text-stone-500">Environ 10 personnes</span></div>
+                                <p class="text-2xl font-bold text-[#230903]">300 €</p>
+                            </div>
+                            <div class="flex flex-wrap gap-3 justify-between items-center">
+                                <div><span class="block text-sm font-bold uppercase text-[#5E2B0A]">Journée complète (8 h)</span><span class="text-xs text-stone-500">Environ 20 personnes</span></div>
+                                <p class="text-2xl font-bold text-[#230903]">550 €</p>
                             </div>
                         </div>
-                    </div>
+                        <p class="mt-4 border-2 border-[#5E2B0A] text-[#5E2B0A] px-6 py-3 rounded-2xl text-sm font-bold text-center">Offre découverte du rendez-vous récurrent (1ère fois) : 240 € la demi-journée / 420 € la journée.</p>
+                    </article>
+
+                    <article id="offer-seminaire" class="offer-panel fade-in">
+                        <h3 class="text-2xl font-serif font-bold text-[#230903] mb-3">Séminaires & QVT</h3>
+                        <p class="text-[#5E2B0A] mb-6">Pour vos événements : semaine de la qualité de vie au travail, séminaire d'entreprise ou journée à thème. Une expérience bien-être pensée sur mesure selon votre programme.</p>
+                        <p class="bg-stone-50 p-6 rounded-xl border border-stone-200 text-center text-lg font-bold text-[#5E2B0A]">Sur devis, selon le format de votre événement.</p>
+                    </article>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="organisation" class="py-16 px-4 bg-[#FBF8F4]">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#230903] mb-8 text-center">Organiser votre intervention</h2>
+            <div class="space-y-4 text-[#5E2B0A]">
+                <details class="bg-white rounded-2xl border border-[#CCB7A5] p-6">
+                    <summary class="font-bold cursor-pointer">Comment se déroule un massage assis en entreprise ?</summary>
+                    <p class="mt-4 leading-relaxed">Savannah intervient directement dans vos locaux avec une chaise ergonomique. Le massage se pratique habillé, sans huile sur le corps. Chaque séance individuelle dure 15 à 20 minutes.</p>
+                </details>
+                <details class="bg-white rounded-2xl border border-[#CCB7A5] p-6">
+                    <summary class="font-bold cursor-pointer">Combien de personnes peuvent participer ?</summary>
+                    <p class="mt-4 leading-relaxed">Comptez environ 10 personnes pour une demi-journée de présence de 4 h, et environ 20 personnes pour une journée de 8 h. Ces capacités sont indicatives : l'organisation se prépare ensemble.</p>
+                </details>
+                <details class="bg-white rounded-2xl border border-[#CCB7A5] p-6">
+                    <summary class="font-bold cursor-pointer">Quels formats et quelle zone d'intervention sont proposés ?</summary>
+                    <p class="mt-4 leading-relaxed">Vannah Rituals se déplace à Montpellier et alentours pour des interventions ponctuelles, des rendez-vous récurrents et des événements. Communiquez le lieu de votre entreprise pour préparer la proposition.</p>
+                </details>
+                <details class="bg-white rounded-2xl border border-[#CCB7A5] p-6">
+                    <summary class="font-bold cursor-pointer">Quelles informations transmettre pour un devis ?</summary>
+                    <p class="mt-4 leading-relaxed">Indiquez votre lieu, la date envisagée, le nombre de participants et le format souhaité. <a href="#contact" class="underline font-bold">Contactez Savannah par téléphone ou email</a> pour préparer votre intervention.</p>
+                </details>
             </div>
         </div>
     </section>
@@ -367,8 +446,9 @@
             </div>
             <div>
                 <h2 class="text-3xl font-serif font-bold text-[#230903] mb-6">Mon engagement</h2>
+                <p class="text-sm font-bold text-[#5E2B0A] mb-4">Savannah Taiton · Fondatrice et praticienne Vannah Rituals</p>
                 <p class="text-[#5E2B0A] mb-4 leading-relaxed font-bold text-xl">Transformer vos pauses en moments de reconnexion.</p>
-                <p class="text-[#5E2B0A] mb-4 leading-relaxed">Passionnée par le lien corps-esprit, j’ai fondé Vannah Rituals pour faire du bien-être un moteur de performance durable.</p>
+                <p class="text-[#5E2B0A] mb-4 leading-relaxed">Passionnée par le lien corps-esprit, j’ai fondé Vannah Rituals pour donner une place au bien-être dans la journée de travail.</p>
                 <p class="text-[#5E2B0A] mb-4 leading-relaxed">Diplômée en massage, je transforme chaque intervention en véritable expérience sensorielle : huiles essentielles, ambiance sonore et attention aux détails.</p>
                 <p class="text-[#5E2B0A] leading-relaxed">Mon objectif ? Que chaque collaborateur reprenne son poste serein et reboosté.</p>
             </div>
@@ -434,14 +514,16 @@
                 </a>
             </div>
 
-            <div class="sm:hidden mt-8 max-w-2xl mx-auto text-left">
-                <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-[#5E2B0A] mb-3">Avis clients</p>
-                <div id="mobile-review-content" aria-live="polite"></div>
-                <div id="mobile-review-controls" class="flex items-center justify-between mt-4 px-2">
-                    <button type="button" onclick="moveMobileReview(-1)" aria-label="Avis précédent" class="w-10 h-10 rounded-full border border-[#5E2B0A] text-[#5E2B0A] text-2xl hover:bg-[#5E2B0A] hover:text-white transition">&#8249;</button>
-                    <div id="mobile-review-dots" class="flex items-center gap-2" aria-label="Navigation entre les avis"></div>
-                    <button type="button" onclick="moveMobileReview(1)" aria-label="Avis suivant" class="w-10 h-10 rounded-full border border-[#5E2B0A] text-[#5E2B0A] text-2xl hover:bg-[#5E2B0A] hover:text-white transition">&#8250;</button>
-                </div>
+            <!-- Témoignages publiés avec l'autorisation de leurs auteurs. -->
+            <div id="client-reviews" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 text-left" aria-label="Avis clients">
+                <article data-name="Matthieu" data-company="Teads" class="bg-white rounded-2xl border border-[#CCB7A5] p-6 shadow-sm">
+                    <blockquote class="font-serif text-lg leading-relaxed text-[#230903]">Un instant suspendu dans la journée pour souffler et repartir à nouveau ! Vannah Rituals est très pro, les massages sont vraiment bien et font du bien !</blockquote>
+                    <p class="mt-5 text-sm font-bold text-[#5E2B0A]">— Matthieu · Teads</p>
+                </article>
+                <article data-name="Olivier" data-company="Teads" class="bg-white rounded-2xl border border-[#CCB7A5] p-6 shadow-sm">
+                    <blockquote class="font-serif text-lg leading-relaxed text-[#230903]">Massages très agréables et efficaces.</blockquote>
+                    <p class="mt-5 text-sm font-bold text-[#5E2B0A]">— Olivier · Teads</p>
+                </article>
             </div>
 
         </div>
@@ -455,7 +537,7 @@
 
     <div id="reviews-backdrop" class="reviews-backdrop" onclick="closeReviews()" aria-hidden="true"></div>
 
-    <aside id="reviews-drawer" class="reviews-drawer bg-[#F4F2F3] flex flex-col" role="dialog" aria-modal="true" aria-labelledby="reviews-title" aria-hidden="true">
+    <aside id="reviews-drawer" inert class="reviews-drawer bg-[#F4F2F3] flex flex-col" role="dialog" aria-modal="true" aria-labelledby="reviews-title" aria-hidden="true">
         <div class="flex items-start justify-between gap-4 px-6 pt-7 pb-5 border-b border-[#CCB7A5]">
             <div class="min-w-0">
                 <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#5E2B0A] mb-2">Vos retours</p>
@@ -486,7 +568,7 @@
     <section id="contact" class="py-20 px-4 bg-[#230903] text-[#F4F2F3] text-center">
         <h2 class="text-3xl font-serif font-bold mb-4">Prêt à faire entrer le bien-être ?</h2>
         <p class="text-[#CCB7A5] max-w-xl mx-auto mb-10 leading-relaxed">
-            Contactez-moi directement par téléphone ou email pour réserver. Chaque intervention est calée selon vos besoins (nombre de personnes, durée, lieu).
+            Pour préparer votre devis, indiquez le lieu, la date envisagée, le nombre de participants et le format souhaité. Contactez-moi par téléphone ou email : nous organiserons l'intervention selon vos besoins.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -555,19 +637,12 @@
 
     <script>
         // --- Reviews side drawer ---
-        // Avis publiés avec l'autorisation de leurs auteurs.
-        const reviews = [
-            {
-                name: "Matthieu",
-                company: "Teads",
-                text: "Un instant suspendu dans la journée pour souffler et repartir à nouveau ! Vannah Rituals est très pro, les massages sont vraiment bien et font du bien !"
-            },
-            {
-                name: "Olivier",
-                company: "Teads",
-                text: "Massages très agréables et efficaces."
-            }
-        ];
+        // Le HTML visible est aussi la source du tiroir : pas de copie des avis.
+        const reviews = Array.from(document.querySelectorAll('#client-reviews article')).map(article => ({
+            name: article.dataset.name,
+            company: article.dataset.company,
+            text: article.querySelector('blockquote').textContent.trim()
+        }));
         let reviewIndex = 0;
         let reviewsLastFocusedElement = null;
 
@@ -604,40 +679,6 @@
             `).join('');
         }
 
-        let mobileReviewIndex = 0;
-
-        function renderMobileReview() {
-            const content = document.getElementById('mobile-review-content');
-            const controls = document.getElementById('mobile-review-controls');
-            const dots = document.getElementById('mobile-review-dots');
-            if (!content || !controls || !dots || !reviews.length) return;
-
-            const review = reviews[mobileReviewIndex];
-            const attribution = [review.name, review.company].filter(Boolean).join(' · ');
-            content.innerHTML = `
-                <article class="bg-white rounded-2xl border border-[#CCB7A5] p-6 shadow-sm fade-in">
-                    <div class="font-serif text-[#D3B88C] text-4xl leading-none mb-1" aria-hidden="true">“</div>
-                    <blockquote class="font-serif text-lg leading-relaxed text-[#230903]">“${escapeReviewText(review.text)}”</blockquote>
-                    ${attribution ? `<p class="mt-5 text-sm font-bold text-[#5E2B0A]">— ${escapeReviewText(attribution)}</p>` : ''}
-                </article>`;
-
-            controls.classList.toggle('hidden', reviews.length < 2);
-            controls.classList.toggle('flex', reviews.length >= 2);
-            dots.innerHTML = reviews.map((_, index) => `
-                <button type="button" onclick="goToMobileReview(${index})" class="review-dot h-2.5 w-2.5 rounded-full bg-[#CCB7A5] ${index === mobileReviewIndex ? 'active' : ''}" aria-label="Afficher l’avis ${index + 1}" ${index === mobileReviewIndex ? 'aria-current="true"' : ''}></button>
-            `).join('');
-        }
-
-        function moveMobileReview(direction) {
-            mobileReviewIndex = (mobileReviewIndex + direction + reviews.length) % reviews.length;
-            renderMobileReview();
-        }
-
-        function goToMobileReview(index) {
-            mobileReviewIndex = index;
-            renderMobileReview();
-        }
-
         function escapeReviewText(value) {
             const element = document.createElement('div');
             element.textContent = value;
@@ -647,6 +688,7 @@
         function openReviews() {
             reviewsLastFocusedElement = document.activeElement;
             document.getElementById('reviews-drawer').classList.add('is-open');
+            document.getElementById('reviews-drawer').inert = false;
             document.getElementById('reviews-backdrop').classList.add('is-open');
             document.getElementById('reviews-drawer').setAttribute('aria-hidden', 'false');
             document.getElementById('reviews-backdrop').setAttribute('aria-hidden', 'false');
@@ -660,6 +702,7 @@
             const drawer = document.getElementById('reviews-drawer');
             if (!drawer.classList.contains('is-open')) return;
             drawer.classList.remove('is-open');
+            drawer.inert = true;
             document.getElementById('reviews-backdrop').classList.remove('is-open');
             drawer.setAttribute('aria-hidden', 'true');
             document.getElementById('reviews-backdrop').setAttribute('aria-hidden', 'true');
@@ -679,7 +722,6 @@
             renderReview();
         }
 
-        document.addEventListener('DOMContentLoaded', renderMobileReview);
         window.addEventListener('resize', () => {
             if (window.innerWidth < 640) closeReviews();
         });
@@ -708,6 +750,9 @@
             const lines = document.querySelectorAll('.burger-line');
             const isOpen = !menu.classList.contains('hidden');
             menu.classList.toggle('hidden');
+            const button = document.getElementById('burger-btn');
+            button.setAttribute('aria-expanded', String(!isOpen));
+            button.setAttribute('aria-label', isOpen ? 'Ouvrir le menu' : 'Fermer le menu');
             if (!isOpen) {
                 lines[0].style.transform = 'translateY(8px) rotate(45deg)';
                 lines[1].style.opacity = '0';
@@ -754,54 +799,45 @@
             restartAutoplay();
         });
 
-        const offerData = {
-            ponctuel: { title: "Intervention ponctuelle", desc: "Pour une occasion ponctuelle : féliciter une équipe après un succès, soulager une période chargée, ou simplement offrir une pause bien méritée.", priceHalf: "350 €", priceFull: "600 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: false },
-            recurrent: { title: "Rendez-vous récurrent", desc: "Le choix le plus stratégique pour fidéliser vos talents. En instaurant un rendez-vous hebdomadaire ou mensuel, vous prévenez l'apparition des TMS (Troubles Musculo-Squelettiques) avant qu'ils ne s'installent.", priceHalf: "300 €", priceFull: "550 €", fullTitle: "Journée complète (8h)", fullSub: "Environ 20 personnes", showHalfRow: true, showDiscovery: true, discoveryText: "Offre découverte (1ère fois) : 240€ (1/2 journée) / 420€ (journée)" },
-            seminaire: { title: "Séminaires & QVT", desc: "Pour vos grands événements : semaine QVT (Qualité de Vie au Travail), séminaire d'entreprise, journée à thème. Une expérience bien-être pensée sur-mesure selon votre programme.", priceHalf: "Sur devis", priceFull: "Sur devis", fullTitle: "", fullSub: "", showHalfRow: false, showDiscovery: false }
-        };
-
+        // Les panneaux sont tous lisibles sans script. JavaScript ajoute les onglets.
         function changeTab(tabId) {
-            const btn = document.getElementById(`btn-${tabId}`);
-            if (!btn) return;
-
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const data = offerData[tabId];
-            document.getElementById('offer-title').textContent = data.title;
-            document.getElementById('offer-desc').textContent = data.desc;
-            document.getElementById('price-half').textContent = data.priceHalf;
-            document.getElementById('price-full').textContent = data.priceFull;
-            document.getElementById('row-half').style.display = data.showHalfRow ? 'flex' : 'none';
-
-            const labelTitle = document.getElementById('label-full-title');
-            const fullSub = document.getElementById('label-full-sub');
-            const rowFull = document.getElementById('row-full');
-
-            if (data.fullTitle) {
-                labelTitle.textContent = data.fullTitle;
-                labelTitle.style.display = 'block';
-                fullSub.textContent = data.fullSub;
-                fullSub.style.display = data.fullSub ? 'block' : 'none';
-                rowFull.classList.remove('justify-center');
-                rowFull.classList.add('justify-between');
-                const priceFull = document.getElementById('price-full');
-                priceFull.className = 'text-2xl font-bold text-[#230903]';
-            } else {
-                labelTitle.style.display = 'none';
-                fullSub.style.display = 'none';
-                rowFull.classList.remove('justify-between');
-                rowFull.classList.add('justify-center');
-                const priceFull = document.getElementById('price-full');
-                priceFull.className = 'text-sm font-bold uppercase text-[#5E2B0A] tracking-wider w-full text-center';
-            }
-
-            document.getElementById('discovery-wrapper').style.display = data.showDiscovery ? 'flex' : 'none';
-            if (data.showDiscovery) document.getElementById('discovery-text').textContent = data.discoveryText;
+            if (!document.getElementById(`offer-${tabId}`)) return;
+            document.querySelectorAll('#offer-tabs button').forEach(button => {
+                const selected = button.dataset.offer === tabId;
+                button.classList.toggle('active', selected);
+                button.setAttribute('aria-selected', String(selected));
+                button.tabIndex = selected ? 0 : -1;
+                document.getElementById(`offer-${button.dataset.offer}`).hidden = !selected;
+            });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            const tabList = document.getElementById('offer-tabs');
+            const buttons = Array.from(tabList.querySelectorAll('button'));
+            tabList.setAttribute('role', 'tablist');
+            tabList.setAttribute('aria-label', 'Formats de massage en entreprise');
+            buttons.forEach((button, index) => {
+                const panel = document.getElementById(`offer-${button.dataset.offer}`);
+                button.setAttribute('role', 'tab');
+                button.setAttribute('aria-controls', panel.id);
+                panel.setAttribute('role', 'tabpanel');
+                panel.setAttribute('aria-labelledby', button.id);
+                panel.tabIndex = 0;
+                button.addEventListener('click', () => changeTab(button.dataset.offer));
+                button.addEventListener('keydown', event => {
+                    let next;
+                    if (event.key === 'ArrowRight') next = (index + 1) % buttons.length;
+                    else if (event.key === 'ArrowLeft') next = (index + buttons.length - 1) % buttons.length;
+                    else if (event.key === 'Home') next = 0;
+                    else if (event.key === 'End') next = buttons.length - 1;
+                    else return;
+                    event.preventDefault();
+                    changeTab(buttons[next].dataset.offer);
+                    buttons[next].focus();
+                });
+            });
             changeTab('ponctuel');
+            tabList.hidden = false;
         });
     </script>
 </body>
