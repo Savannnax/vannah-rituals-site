@@ -150,6 +150,25 @@
             width: 1.5rem;
             background-color: #5E2B0A;
         }
+        .review-carousel-ready #review-viewport {
+            overflow: hidden;
+            border: 1px solid #CCB7A5;
+            border-radius: 1.5rem;
+            background: white;
+            box-shadow: 0 4px 16px rgba(35, 9, 3, .05);
+        }
+        .review-carousel-ready #client-reviews {
+            display: flex;
+            gap: 0;
+            transition: transform .6s ease;
+        }
+        .review-carousel-ready #client-reviews article {
+            flex: 0 0 100%;
+            min-width: 0;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
         @media (max-width: 639px) {
             .reviews-rail,
             .reviews-backdrop,
@@ -160,7 +179,8 @@
         @media (prefers-reduced-motion: reduce) {
             .reviews-backdrop,
             .reviews-drawer,
-            .review-dot {
+            .review-dot,
+            .review-carousel-ready #client-reviews {
                 transition: none;
             }
         }
@@ -415,25 +435,29 @@
     </section>
 
     <section id="organisation" class="py-16 px-4 bg-[#FBF8F4]">
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#230903] mb-8 text-center">Organiser votre intervention</h2>
-            <div class="space-y-4 text-[#5E2B0A]">
-                <details class="bg-white rounded-2xl border border-[#CCB7A5] p-6">
-                    <summary class="font-bold cursor-pointer">Comment se déroule un massage assis en entreprise ?</summary>
-                    <p class="mt-4 leading-relaxed">Savannah intervient directement dans vos locaux avec une chaise ergonomique. Le massage se pratique habillé, sans huile sur le corps. Chaque séance individuelle dure 15 à 20 minutes.</p>
-                </details>
-                <details class="bg-white rounded-2xl border border-[#CCB7A5] p-6">
-                    <summary class="font-bold cursor-pointer">Combien de personnes peuvent participer ?</summary>
-                    <p class="mt-4 leading-relaxed">Comptez environ 10 personnes pour une demi-journée de présence de 4 h, et environ 20 personnes pour une journée de 8 h. Ces capacités sont indicatives : l'organisation se prépare ensemble.</p>
-                </details>
-                <details class="bg-white rounded-2xl border border-[#CCB7A5] p-6">
-                    <summary class="font-bold cursor-pointer">Quels formats et quelle zone d'intervention sont proposés ?</summary>
-                    <p class="mt-4 leading-relaxed">Vannah Rituals se déplace à Montpellier et alentours pour des interventions ponctuelles, des rendez-vous récurrents et des événements. Communiquez le lieu de votre entreprise pour préparer la proposition.</p>
-                </details>
-                <details class="bg-white rounded-2xl border border-[#CCB7A5] p-6">
-                    <summary class="font-bold cursor-pointer">Quelles informations transmettre pour un devis ?</summary>
-                    <p class="mt-4 leading-relaxed">Indiquez votre lieu, la date envisagée, le nombre de participants et le format souhaité. <a href="#contact" class="underline font-bold">Contactez Savannah par téléphone ou email</a> pour préparer votre intervention.</p>
-                </details>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-[#5E2B0A]">
+                <article class="bg-white rounded-3xl border border-[#CCB7A5] p-6">
+                    <span class="inline-flex w-10 h-10 items-center justify-center rounded-2xl bg-[#5E2B0A] text-white font-bold mb-5" aria-hidden="true">1</span>
+                    <h3 class="font-serif text-xl font-bold text-[#230903] mb-3">Une séance sur chaise</h3>
+                    <p class="text-sm leading-relaxed">Savannah vient dans vos locaux avec sa chaise ergonomique. Le massage se pratique habillé, sans huile sur le corps, pendant 15 à 20 minutes par personne.</p>
+                </article>
+                <article class="bg-white rounded-3xl border border-[#CCB7A5] p-6">
+                    <span class="inline-flex w-10 h-10 items-center justify-center rounded-2xl bg-[#5E2B0A] text-white font-bold mb-5" aria-hidden="true">2</span>
+                    <h3 class="font-serif text-xl font-bold text-[#230903] mb-3">Le rythme de votre équipe</h3>
+                    <p class="text-sm leading-relaxed">Environ 10 personnes sur une demi-journée de 4 h, ou 20 personnes sur une journée de 8 h. L'organisation se prépare ensemble selon votre équipe.</p>
+                </article>
+                <article class="bg-white rounded-3xl border border-[#CCB7A5] p-6">
+                    <span class="inline-flex w-10 h-10 items-center justify-center rounded-2xl bg-[#5E2B0A] text-white font-bold mb-5" aria-hidden="true">3</span>
+                    <h3 class="font-serif text-xl font-bold text-[#230903] mb-3">Montpellier et alentours</h3>
+                    <p class="text-sm leading-relaxed">Une intervention ponctuelle, un rendez-vous récurrent ou un événement : indiquez le lieu de votre entreprise pour préparer la proposition.</p>
+                </article>
+                <article class="bg-white rounded-3xl border border-[#CCB7A5] p-6">
+                    <span class="inline-flex w-10 h-10 items-center justify-center rounded-2xl bg-[#5E2B0A] text-white font-bold mb-5" aria-hidden="true">4</span>
+                    <h3 class="font-serif text-xl font-bold text-[#230903] mb-3">Préparer votre devis</h3>
+                    <p class="text-sm leading-relaxed">Transmettez le lieu, la date envisagée, le nombre de participants et le format souhaité. <a href="#contact" class="underline font-bold">Contactez Savannah</a> par téléphone ou email.</p>
+                </article>
             </div>
         </div>
     </section>
@@ -509,13 +533,15 @@
             </div>
 
             <div class="text-center mt-10">
-                <a href="https://forms.gle/AAj5Hh5r4xPhiNe28" target="_blank" class="inline-block border-2 border-[#5E2B0A] text-[#5E2B0A] px-6 py-3 rounded-full font-bold text-sm hover:bg-[#5E2B0A] hover:text-[#F4F2F3] transition">
-                    Vous avez été massé(e) ? Laissez votre avis
+                <a href="https://g.page/r/CUB8U8Dv2tpBEBI/review" target="_blank" rel="noopener noreferrer" class="inline-block border-2 border-[#5E2B0A] text-[#5E2B0A] px-6 py-3 rounded-full font-bold text-sm hover:bg-[#5E2B0A] hover:text-[#F4F2F3] transition">
+                    Vous avez été massé(e) ? Laissez votre avis sur Google
                 </a>
             </div>
 
             <!-- Témoignages publiés avec l'autorisation de leurs auteurs. -->
-            <div id="client-reviews" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 text-left" aria-label="Avis clients">
+            <div id="review-carousel" class="mt-10 max-w-3xl mx-auto" role="region" aria-roledescription="carrousel" aria-label="Témoignages clients">
+            <div id="review-viewport" aria-live="off">
+            <div id="client-reviews" class="grid grid-cols-1 gap-6 text-left">
                 <article data-name="Matthieu" data-company="Teads" class="bg-white rounded-2xl border border-[#CCB7A5] p-6 shadow-sm">
                     <blockquote class="font-serif text-lg leading-relaxed text-[#230903]">Un instant suspendu dans la journée pour souffler et repartir à nouveau ! Vannah Rituals est très pro, les massages sont vraiment bien et font du bien !</blockquote>
                     <p class="mt-5 text-sm font-bold text-[#5E2B0A]">— Matthieu · Teads</p>
@@ -524,6 +550,17 @@
                     <blockquote class="font-serif text-lg leading-relaxed text-[#230903]">Massages très agréables et efficaces.</blockquote>
                     <p class="mt-5 text-sm font-bold text-[#5E2B0A]">— Olivier · Teads</p>
                 </article>
+            </div>
+            </div>
+            <div id="inline-review-controls" hidden class="flex flex-wrap items-center justify-center gap-4 mt-5">
+                <button type="button" onclick="moveInlineReview(-1)" aria-label="Témoignage précédent" class="w-10 h-10 rounded-full border border-[#5E2B0A] text-[#5E2B0A] text-2xl hover:bg-[#5E2B0A] hover:text-white transition">&#8249;</button>
+                <div id="inline-review-dots" class="flex gap-2" aria-label="Choisir un témoignage">
+                    <button type="button" onclick="goToInlineReview(0)" class="review-dot active w-2.5 h-2.5 rounded-full bg-[#CCB7A5]" aria-label="Afficher le témoignage 1" aria-current="true"></button>
+                    <button type="button" onclick="goToInlineReview(1)" class="review-dot w-2.5 h-2.5 rounded-full bg-[#CCB7A5]" aria-label="Afficher le témoignage 2"></button>
+                </div>
+                <button type="button" onclick="moveInlineReview(1)" aria-label="Témoignage suivant" class="w-10 h-10 rounded-full border border-[#5E2B0A] text-[#5E2B0A] text-2xl hover:bg-[#5E2B0A] hover:text-white transition">&#8250;</button>
+                <button id="inline-review-pause" type="button" onclick="toggleInlineReviews()" class="text-sm font-bold text-[#5E2B0A] underline" aria-label="Mettre le défilement des témoignages en pause">Pause</button>
+            </div>
             </div>
 
         </div>
@@ -558,8 +595,8 @@
 
         <div class="px-6 py-6 bg-white border-t border-[#CCB7A5]">
             <p class="text-sm text-[#5E2B0A] mb-4">Vous avez vécu l’expérience Vannah Rituals ? Votre retour compte beaucoup.</p>
-            <a href="https://forms.gle/AAj5Hh5r4xPhiNe28" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-[#230903] text-[#F4F2F3] px-6 py-3 rounded-full font-bold hover:bg-[#5E2B0A] transition">
-                Laisser un avis
+            <a href="https://g.page/r/CUB8U8Dv2tpBEBI/review" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-[#230903] text-[#F4F2F3] px-6 py-3 rounded-full font-bold hover:bg-[#5E2B0A] transition">
+                Laisser un avis sur Google
             </a>
         </div>
     </aside>
@@ -643,6 +680,83 @@
             company: article.dataset.company,
             text: article.querySelector('blockquote').textContent.trim()
         }));
+
+        // Le carrousel améliore les témoignages déjà présents dans le HTML.
+        const inlineReviewSlides = Array.from(document.querySelectorAll('#client-reviews article'));
+        let inlineReviewIndex = 0;
+        let inlineReviewTimer = null;
+        let inlineReviewsPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let inlineReviewsHovered = false;
+        let inlineReviewsFocused = false;
+
+        function updateInlineReview() {
+            document.getElementById('client-reviews').style.transform = `translateX(-${inlineReviewIndex * 100}%)`;
+            inlineReviewSlides.forEach((slide, index) => {
+                const active = index === inlineReviewIndex;
+                slide.setAttribute('aria-hidden', String(!active));
+                slide.inert = !active;
+            });
+            document.querySelectorAll('#inline-review-dots button').forEach((button, index) => {
+                button.classList.toggle('active', index === inlineReviewIndex);
+                if (index === inlineReviewIndex) button.setAttribute('aria-current', 'true');
+                else button.removeAttribute('aria-current');
+            });
+            const pauseButton = document.getElementById('inline-review-pause');
+            pauseButton.textContent = inlineReviewsPaused ? 'Reprendre' : 'Pause';
+            pauseButton.setAttribute('aria-label', inlineReviewsPaused ? 'Reprendre le défilement des témoignages' : 'Mettre le défilement des témoignages en pause');
+        }
+
+        function restartInlineReviews() {
+            clearInterval(inlineReviewTimer);
+            if (inlineReviewSlides.length < 2 || inlineReviewsPaused || inlineReviewsHovered || inlineReviewsFocused || document.hidden) return;
+            inlineReviewTimer = setInterval(() => {
+                inlineReviewIndex = (inlineReviewIndex + 1) % inlineReviewSlides.length;
+                updateInlineReview();
+            }, 6000);
+        }
+
+        function goToInlineReview(index) {
+            inlineReviewIndex = (index + inlineReviewSlides.length) % inlineReviewSlides.length;
+            updateInlineReview();
+            restartInlineReviews();
+        }
+
+        function moveInlineReview(direction) {
+            goToInlineReview(inlineReviewIndex + direction);
+        }
+
+        function toggleInlineReviews() {
+            inlineReviewsPaused = !inlineReviewsPaused;
+            updateInlineReview();
+            restartInlineReviews();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!inlineReviewSlides.length) return;
+            const carousel = document.getElementById('review-carousel');
+            carousel.classList.add('review-carousel-ready');
+            document.getElementById('inline-review-controls').hidden = inlineReviewSlides.length < 2;
+            carousel.addEventListener('mouseenter', () => {
+                inlineReviewsHovered = true;
+                restartInlineReviews();
+            });
+            carousel.addEventListener('mouseleave', () => {
+                inlineReviewsHovered = false;
+                restartInlineReviews();
+            });
+            carousel.addEventListener('focusin', () => {
+                inlineReviewsFocused = true;
+                restartInlineReviews();
+            });
+            carousel.addEventListener('focusout', event => {
+                inlineReviewsFocused = carousel.contains(event.relatedTarget);
+                restartInlineReviews();
+            });
+            document.addEventListener('visibilitychange', restartInlineReviews);
+            updateInlineReview();
+            restartInlineReviews();
+        });
+
         let reviewIndex = 0;
         let reviewsLastFocusedElement = null;
 
