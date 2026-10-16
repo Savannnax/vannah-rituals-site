@@ -559,7 +559,6 @@
                     <button type="button" onclick="goToInlineReview(1)" class="review-dot w-2.5 h-2.5 rounded-full bg-[#CCB7A5]" aria-label="Afficher le témoignage 2"></button>
                 </div>
                 <button type="button" onclick="moveInlineReview(1)" aria-label="Témoignage suivant" class="w-10 h-10 rounded-full border border-[#5E2B0A] text-[#5E2B0A] text-2xl hover:bg-[#5E2B0A] hover:text-white transition">&#8250;</button>
-                <button id="inline-review-pause" type="button" onclick="toggleInlineReviews()" class="text-sm font-bold text-[#5E2B0A] underline" aria-label="Mettre le défilement des témoignages en pause">Pause</button>
             </div>
             </div>
 
@@ -685,7 +684,7 @@
         const inlineReviewSlides = Array.from(document.querySelectorAll('#client-reviews article'));
         let inlineReviewIndex = 0;
         let inlineReviewTimer = null;
-        let inlineReviewsPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const inlineReviewsReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         let inlineReviewsHovered = false;
         let inlineReviewsFocused = false;
 
@@ -701,14 +700,11 @@
                 if (index === inlineReviewIndex) button.setAttribute('aria-current', 'true');
                 else button.removeAttribute('aria-current');
             });
-            const pauseButton = document.getElementById('inline-review-pause');
-            pauseButton.textContent = inlineReviewsPaused ? 'Reprendre' : 'Pause';
-            pauseButton.setAttribute('aria-label', inlineReviewsPaused ? 'Reprendre le défilement des témoignages' : 'Mettre le défilement des témoignages en pause');
         }
 
         function restartInlineReviews() {
             clearInterval(inlineReviewTimer);
-            if (inlineReviewSlides.length < 2 || inlineReviewsPaused || inlineReviewsHovered || inlineReviewsFocused || document.hidden) return;
+            if (inlineReviewSlides.length < 2 || inlineReviewsReducedMotion || inlineReviewsHovered || inlineReviewsFocused || document.hidden) return;
             inlineReviewTimer = setInterval(() => {
                 inlineReviewIndex = (inlineReviewIndex + 1) % inlineReviewSlides.length;
                 updateInlineReview();
@@ -723,12 +719,6 @@
 
         function moveInlineReview(direction) {
             goToInlineReview(inlineReviewIndex + direction);
-        }
-
-        function toggleInlineReviews() {
-            inlineReviewsPaused = !inlineReviewsPaused;
-            updateInlineReview();
-            restartInlineReviews();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
