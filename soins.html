@@ -80,20 +80,6 @@
         .modal-panel {
             animation: modal-in .35s ease both;
         }
-        .protocol-list li {
-            position: relative;
-            padding-left: 1.2rem;
-        }
-        .protocol-list li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: .58rem;
-            width: .4rem;
-            height: .4rem;
-            border-radius: 999px;
-            background: var(--clay);
-        }
         @keyframes modal-in {
             from { opacity: 0; transform: translateY(24px) scale(.985); }
             to { opacity: 1; transform: translateY(0) scale(1); }
@@ -202,7 +188,7 @@
                         </div>
                         <p class="text-xs uppercase tracking-[.16em] font-bold text-[#F3E9E1] mb-2">Visage</p>
                         <h3 class="text-3xl text-white mb-3">Soin visage</h3>
-                        <p class="text-white/85 leading-relaxed mb-7">Un protocole adapté à votre peau, pensé pour apporter confort, éclat et détente dans un même soin.</p>
+                        <p class="text-white/85 leading-relaxed mb-7">Un soin construit autour de votre peau, de vos besoins et de vos envies, pour associer confort, éclat et détente.</p>
                         <p class="text-sm font-bold text-white">Voir les soins et tarifs →</p>
                         </div>
                     </button>
@@ -386,70 +372,38 @@
                 <div class="p-6 sm:p-8 md:p-11 lg:p-12 clear-both">
                     <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Choisissez votre soin</p>
                     <h3 class="text-3xl md:text-4xl text-[#230903] mb-3">Une attention adaptée à votre peau et à votre rythme.</h3>
-                    <p class="text-[#5E2B0A] leading-relaxed mb-8">Les produits, les textures et le masque sont choisis selon les besoins observés le jour du rendez-vous.</p>
+                    <p class="text-[#5E2B0A] leading-relaxed mb-8">Choisissez le temps que vous souhaitez vous accorder. Le soin et le massage qui l’accompagne s’adaptent ensuite à vos besoins et à vos envies du moment.</p>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-9 max-w-md mx-auto lg:max-w-none">
                         <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5">
                             <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-2">La Fraîcheur</p>
                             <p class="font-serif text-3xl text-[#230903] mb-1">30 min</p>
                             <p class="text-2xl font-bold text-[#5E2B0A] mb-3">45 €</p>
-                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Pour rafraîchir, hydrater et retrouver une peau lumineuse en peu de temps.</p>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Une pause essentielle pour apporter fraîcheur et confort à votre peau.</p>
                         </div>
                         <div class="rounded-2xl border-2 border-[#9D5B38] bg-[#F3E9E1] p-5 relative">
                             <span class="absolute -top-3 left-5 bg-[#9D5B38] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Le plus populaire</span>
                             <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-2">L’Harmonie</p>
                             <p class="font-serif text-3xl text-[#230903] mb-1">1 h</p>
                             <p class="text-2xl font-bold text-[#5E2B0A] mb-3">70 €</p>
-                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Un soin complet qui associe beauté de la peau et détente profonde.</p>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Un soin plus complet, qui associe attention portée au visage et massage selon vos envies.</p>
                         </div>
                         <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5">
                             <p class="text-xs font-bold uppercase tracking-[.14em] text-[#9D5B38] mb-2">L’Absolu</p>
                             <p class="font-serif text-3xl text-[#230903] mb-1">1 h 30</p>
                             <p class="text-2xl font-bold text-[#5E2B0A] mb-3">100 €</p>
-                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Une expérience enveloppante pour prendre soin du visage et relâcher tout le haut du corps.</p>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A]">Une parenthèse prolongée, avec davantage de temps consacré au massage et au lâcher-prise.</p>
                         </div>
                     </div>
 
                     <div class="border-t border-[#CCB7A5] pt-9">
-                        <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Le protocole en détail</p>
-
-                        <div class="space-y-3 mb-8">
-                            <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5 sm:p-6">
-                                <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
-                                    <div class="sm:w-32 shrink-0"><p class="font-serif text-xl text-[#230903]">30 minutes</p></div>
-                                    <ul class="protocol-list text-sm leading-relaxed text-[#5E2B0A] space-y-1.5">
-                                        <li>Lait nettoyant</li>
-                                        <li>Gommage doux</li>
-                                        <li>Masque hydratant</li>
-                                        <li>Massage crânien pendant la pose</li>
-                                        <li>Sérum, contour des yeux et crème de jour</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5 sm:p-6">
-                                <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
-                                    <div class="sm:w-32 shrink-0"><p class="font-serif text-xl text-[#230903]">1 heure</p></div>
-                                    <ul class="protocol-list text-sm leading-relaxed text-[#5E2B0A] space-y-1.5">
-                                        <li>Observation des besoins de la peau</li>
-                                        <li>Nettoyage et gommage doux</li>
-                                        <li>Massage du visage, du cou, du décolleté et des trapèzes</li>
-                                        <li>Masque ciblé : purifiant, apaisant, nourrissant ou hydratant</li>
-                                        <li>Massage crânien et soins de finition</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5 sm:p-6">
-                                <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
-                                    <div class="sm:w-32 shrink-0"><p class="font-serif text-xl text-[#230903]">1 h 30</p></div>
-                                    <ul class="protocol-list text-sm leading-relaxed text-[#5E2B0A] space-y-1.5">
-                                        <li>Observation complète des besoins de la peau</li>
-                                        <li>Nettoyage et gommage adaptés</li>
-                                        <li>Massage prolongé du visage, du cou, du décolleté et des trapèzes</li>
-                                        <li>Massage des bras et des mains</li>
-                                        <li>Double masque ciblé puis hydratant</li>
-                                        <li>Massage crânien et soins de finition</li>
-                                    </ul>
-                                </div>
+                        <div class="rounded-2xl border border-[#CCB7A5] bg-white p-5 sm:p-6 mb-8">
+                            <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Au plus près de vos envies</p>
+                            <h3 class="font-serif text-3xl text-[#230903] mb-4">Un soin qui s’adapte à vous</h3>
+                            <p class="text-sm leading-relaxed text-[#5E2B0A] mb-5">Chaque peau est différente, chaque rendez-vous aussi. Avant le soin, nous prenons le temps d’échanger sur vos besoins, vos envies, vos sensibilités et vos éventuelles allergies. Les produits et les gestes sont ensuite sélectionnés en fonction de vous, pour un soin personnalisé jusque dans les détails.</p>
+                            <div class="border-t border-[#CCB7A5]/60 pt-5">
+                                <h4 class="font-serif text-xl text-[#230903] mb-2">Votre massage, vos préférences</h4>
+                                <p class="text-sm leading-relaxed text-[#5E2B0A]">Envie de relâcher les trapèzes, de profiter d’un massage crânien ou de détendre les mains ? Vous choisissez les zones à privilégier et celles sur lesquelles vous souhaitez que l’on s’attarde, en fonction du temps de massage prévu dans votre soin. Les pressions et le rythme s’ajustent à votre confort, et vous pouvez exprimer vos préférences à tout moment.</p>
                             </div>
                         </div>
 
