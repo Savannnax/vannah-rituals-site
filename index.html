@@ -193,6 +193,7 @@
     <link rel="stylesheet" href="site-header.css?v=20261031-center">
     <script src="site-header.js" defer></script>
     <noscript><style>@media(max-width:859px){.site-header-inner{flex-wrap:wrap}.site-menu-toggle{display:none}.site-navigation{display:flex;position:static;flex-basis:100%;border-bottom:0;box-shadow:none;padding:0}}</style></noscript>
+    <link rel="stylesheet" href="site-footer.css?v=20261031-footer">
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 
@@ -565,35 +566,35 @@
         </div>
     </aside>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 bg-[#230903] text-[#F4F2F3] text-center">
-        <h2 class="text-3xl font-serif font-bold mb-4">Prêt à faire entrer le bien-être ?</h2>
-        <p class="text-[#CCB7A5] max-w-xl mx-auto mb-10 leading-relaxed">
-            Pour préparer votre devis, indiquez le lieu, la date envisagée, le nombre de participants et le format souhaité. Contactez-moi par téléphone ou email : nous organiserons l'intervention selon vos besoins.
-        </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+33695785259" class="bg-[#D3B88C] text-[#230903] px-8 py-4 rounded-full font-bold text-lg hover:bg-[#CCB7A5] transition flex items-center justify-center gap-2">
-                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.4 11 11 0 0 0 3.4.5 1.5 1.5 0 0 1 1.5 1.5V20a1.5 1.5 0 0 1-1.5 1.5A17.5 17.5 0 0 1 2.5 4 1.5 1.5 0 0 1 4 2.5h3.2a1.5 1.5 0 0 1 1.5 1.5 11 11 0 0 0 .5 3.4 1.5 1.5 0 0 1-.4 1.5l-2.2 2.2Z"/>
-                </svg>
-                06 95 78 52 59
-            </a>
-            <a href="mailto:contact@vannahrituals.fr" class="border-2 border-[#D3B88C] text-[#D3B88C] px-8 py-4 rounded-full font-bold text-base hover:bg-[#D3B88C] hover:text-[#230903] transition flex items-center justify-center gap-2">
-                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="5" width="18" height="14" rx="2"/>
-                    <path d="m4 7 8 6 8-6"/>
-                </svg>
-                contact@vannahrituals.fr
-            </a>
-        </div>
-    </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1a0602] text-[#CCB7A5] text-xs py-6 px-4 text-center">
-        <p class="mb-2">© 2026 Vannah Rituals — SIRET 913 830 154 00013</p>
-        <button onclick="openMentions()" class="underline hover:text-white transition">Mentions légales</button>
-    </footer>
+    <footer class="site-footer">
+    <div id="contact" class="site-footer-main">
+        <div class="site-footer-content">
+            <p class="site-footer-eyebrow">Le bien-être en entreprise</p>
+            <h2 class="site-footer-title">Prêt à faire entrer le bien-être ?</h2>
+            <p class="site-footer-intro">Pour préparer votre devis, indiquez le lieu, la date envisagée, le nombre de participants et le format souhaité. Contactez-moi par téléphone ou email : nous organiserons l’intervention selon vos besoins.</p>
+            <div class="site-footer-actions">
+                <a class="site-footer-button" href="tel:+33695785259">06 95 78 52 59</a>
+                <a class="site-footer-button site-footer-button-outline" href="mailto:contact@vannahrituals.fr">contact@vannahrituals.fr</a>
+            </div>
+        </div>
+    </div>
+    <div class="site-footer-bottom">
+        <div class="site-footer-bottom-inner">
+            <p class="site-footer-copyright">© 2026 Vannah Rituals — SIRET 913 830 154 00013</p>
+            <nav class="site-footer-nav" aria-label="Pied de page">
+                <a href="https://vannahrituals.fr/">Entreprises</a>
+                <a href="https://vannahrituals.fr/soins.html">Particuliers</a>
+                <a href="https://reservation.vannahrituals.fr/cadeaux">Bons cadeaux</a>
+                <a href="mailto:contact@vannahrituals.fr">Contact</a>
+                <a href="#mentions-legales" onclick="openMentions(); return false;">Mentions légales</a>
+                <a href="https://vannahrituals.fr/confidentialite.html">Confidentialité</a>
+            </nav>
+        </div>
+    </div>
+</footer>
 
     <!-- Mentions légales Modal -->
     <div id="mentions-overlay" class="hidden fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4" onclick="if(event.target===this) closeMentions()">

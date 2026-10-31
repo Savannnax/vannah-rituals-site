@@ -1,0 +1,31 @@
+/* Shared public footer: keep in sync with reservation/app/site-footer.css. */
+.site-footer,.site-footer *,.site-footer *::before,.site-footer *::after{box-sizing:border-box}
+.site-footer{display:block;margin:0;padding:0;border:0;background:#230903;color:#fbf8f4;font-family:Lato,Arial,sans-serif;font-size:15px;line-height:1.7}
+.site-footer-main{position:relative;overflow:hidden;padding:100px 24px 88px;text-align:center;scroll-margin-top:80px}
+.site-footer-main::before,.site-footer-main::after{content:'';position:absolute;border-radius:50%;pointer-events:none}
+.site-footer-main::before{top:0;left:calc(50% - 625px);width:256px;height:256px;border:1px solid rgba(211,184,140,.25)}
+.site-footer-main::after{right:calc(50% - 610px);bottom:-80px;width:320px;height:320px;background:rgba(94,43,10,.45)}
+.site-footer-content{position:relative;z-index:1;max-width:1050px;margin:0 auto}
+.site-footer p{margin:0}
+.site-footer .site-footer-eyebrow{margin-bottom:16px;color:#d3b88c;font-size:11px;font-weight:700;letter-spacing:2.3px;text-transform:uppercase}
+.site-footer .site-footer-title{max-width:1050px;margin:0 auto 24px;color:#fbf8f4;font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,4.2vw,60px);font-weight:400;line-height:1.12;letter-spacing:-.7px}
+.site-footer .site-footer-intro{max-width:680px;margin:0 auto 28px;color:#ccb7a5;font-size:15px;line-height:1.8}
+.site-footer .site-footer-details{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 28px;margin:0 auto 32px;color:#fbf8f4;font-size:13px}
+.site-footer-details span+span::before{content:'•';margin-right:28px;color:#d3b88c}
+.site-footer .site-footer-note{max-width:680px;margin:0 auto 26px;color:#fbf8f4;font-size:13px;line-height:1.8}
+.site-footer-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px}
+.site-footer .site-footer-button{display:inline-flex;align-items:center;justify-content:center;min-height:54px;max-width:100%;padding:14px 30px;border:1px solid #d3b88c;border-radius:999px;background:#d3b88c;color:#230903;text-decoration:none;font-size:15px;font-weight:700;line-height:1.5;transition:background .18s ease,color .18s ease}
+.site-footer .site-footer-button:hover{background:#e4cda9;border-color:#e4cda9}
+.site-footer .site-footer-button-outline{background:transparent;color:#d3b88c}
+.site-footer .site-footer-button-outline:hover{background:#d3b88c;color:#230903}
+.site-footer-bottom{background:#170602}
+.site-footer-bottom-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;max-width:1200px;margin:0 auto;padding:28px 24px;color:#ccb7a5;font-size:12px}
+.site-footer .site-footer-copyright{margin:0}
+.site-footer-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 22px}
+.site-footer-nav a{color:#ccb7a5;text-decoration:none;font-size:13px;line-height:1.6}
+.site-footer-nav a:hover{color:#fbf8f4;text-decoration:underline;text-underline-offset:4px}
+.site-footer a:focus-visible{outline:2px solid #d3b88c;outline-offset:5px}
+@media(max-width:859px){.site-footer-main{padding:72px 24px;scroll-margin-top:72px}.site-footer-bottom-inner{flex-direction:column;justify-content:center;text-align:center}}
+@media(max-width:560px){.site-footer-main{padding:64px 20px}.site-footer-main::before{left:-130px;top:-90px}.site-footer-main::after{right:-180px;bottom:-160px}.site-footer .site-footer-title{font-size:36px;letter-spacing:-.4px}.site-footer .site-footer-eyebrow{font-size:10px;letter-spacing:1.8px}.site-footer .site-footer-details{flex-direction:column;gap:8px}.site-footer-details span+span::before{content:none}.site-footer .site-footer-intro{font-size:14px}.site-footer-actions{flex-direction:column;gap:12px}.site-footer .site-footer-button{width:100%;padding:14px 18px;font-size:14px;overflow-wrap:anywhere}.site-footer-bottom-inner{padding:26px 20px;gap:20px}.site-footer-nav{gap:12px 20px}.site-footer-nav a{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.site-footer .site-footer-button{transition:none}}
+@media print{.site-footer{display:none}}
