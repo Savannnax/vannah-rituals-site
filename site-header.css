@@ -17,6 +17,11 @@
 .site-header[data-menu-open='true'] .site-menu-toggle span:nth-child(2){opacity:0}
 .site-header[data-menu-open='true'] .site-menu-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 .site-header a:focus-visible,.site-menu-toggle:focus-visible{outline:2px solid #9d5b38;outline-offset:5px}
+@media(min-width:860px){
+ .site-header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:16px}
+ .site-brand{justify-self:start}
+ .site-navigation{grid-column:2}
+}
 @media(max-width:859px){
  .site-header-inner{min-height:72px;padding:10px 20px;gap:20px}
  .site-logo{width:48px;height:48px}.site-wordmark{font-size:18px}
