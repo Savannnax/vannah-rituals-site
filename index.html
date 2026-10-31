@@ -187,53 +187,29 @@
     </style>
     <noscript>
         <style>
-            #mobile-menu { display: block; }
-            #burger-btn, #reviews-rail { display: none; }
+            #reviews-rail { display: none; }
         </style>
     </noscript>
+    <link rel="stylesheet" href="site-header.css">
+    <script src="site-header.js" defer></script>
+    <noscript><style>@media(max-width:859px){.site-header-inner{flex-wrap:wrap}.site-menu-toggle{display:none}.site-navigation{display:flex;position:static;flex-basis:100%;border-bottom:0;box-shadow:none;padding:0}}</style></noscript>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50" style="background: rgba(244, 242, 243, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(204, 183, 165, 0.3); box-shadow: 0 2px 16px rgba(35, 9, 3, 0.06);">
-        <div class="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
-            <a href="/" class="flex items-center gap-3">
-                <img src="logo.png" 
-                     alt="Logo Vannah Rituals" 
-                     class="h-14 w-14 rounded-full object-cover border border-[#CCB7A5]">
-                <span class="font-serif font-normal text-[#5E2B0A] text-lg leading-tight">Vannah<br>Rituals</span>
+    <nav class="site-header" aria-label="Navigation principale" data-menu-open="false">
+        <div class="site-header-inner">
+            <a href="https://vannahrituals.fr/" class="site-brand" aria-label="Vannah Rituals — accueil">
+                <img src="logo.png" alt="" class="site-logo" width="54" height="54">
+                <span class="site-wordmark">Vannah<br>Rituals</span>
             </a>
-            
-            <div class="hidden md:flex items-center gap-4 lg:gap-6 text-xs lg:text-sm font-semibold text-[#5E2B0A]">
-                <a href="#experience" class="hover:text-[#230903] transition">L'Expérience</a>
-                <a href="#enaction" class="hover:text-[#230903] transition">En action</a>
-                <a href="#offres" class="hover:text-[#230903] transition">Offres & tarifs</a>
-                <a href="soins.html" class="hover:text-[#230903] transition">Soins particuliers</a>
-                <a href="#apropos" class="hover:text-[#230903] transition">À propos</a>
-                <a href="#contact" class="hover:text-[#230903] transition">Contact</a>
-            </div>
-
-            <div class="flex items-center gap-3">
-                <a href="#contact" class="bg-[#230903] text-[#F4F2F3] px-5 py-2 rounded-full text-sm font-bold hover:bg-[#5E2B0A] transition">
-                    Demander un devis
-                </a>
-                <button id="burger-btn" type="button" onclick="toggleMenu()" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5">
-                    <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
-                    <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
-                    <span class="burger-line block w-6 h-0.5 bg-[#230903] transition-all duration-300"></span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
-            <div class="flex flex-col gap-4 text-sm font-semibold text-[#5E2B0A] pt-3 border-t border-[#CCB7A5]">
-                <a href="#experience" onclick="toggleMenu()" class="hover:text-[#230903] transition">L'Expérience</a>
-                <a href="#enaction" onclick="toggleMenu()" class="hover:text-[#230903] transition">En action</a>
-                <a href="#offres" onclick="toggleMenu()" class="hover:text-[#230903] transition">Offres & tarifs</a>
-                <a href="soins.html" class="hover:text-[#230903] transition">Soins particuliers</a>
-                <a href="#apropos" onclick="toggleMenu()" class="hover:text-[#230903] transition">À propos</a>
-                <a href="#contact" onclick="toggleMenu()" class="hover:text-[#230903] transition">Contact</a>
+            <button class="site-menu-toggle" type="button" aria-label="Ouvrir le menu" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+            <div class="site-navigation" id="site-navigation">
+                <a href="https://vannahrituals.fr/" aria-current="page">Entreprises</a>
+                <a href="https://vannahrituals.fr/soins.html">Particuliers</a>
+                <a href="https://reservation.vannahrituals.fr/cadeaux">Bons cadeaux</a>
+                <a href="https://vannahrituals.fr/#apropos">À propos</a>
+                <a href="https://vannahrituals.fr/#contact">Contact</a>
             </div>
         </div>
     </nav>
@@ -847,26 +823,6 @@
                 closeReviews();
             }
         });
-
-        // --- Menu burger mobile ---
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const lines = document.querySelectorAll('.burger-line');
-            const isOpen = !menu.classList.contains('hidden');
-            menu.classList.toggle('hidden');
-            const button = document.getElementById('burger-btn');
-            button.setAttribute('aria-expanded', String(!isOpen));
-            button.setAttribute('aria-label', isOpen ? 'Ouvrir le menu' : 'Fermer le menu');
-            if (!isOpen) {
-                lines[0].style.transform = 'translateY(8px) rotate(45deg)';
-                lines[1].style.opacity = '0';
-                lines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
-            } else {
-                lines[0].style.transform = '';
-                lines[1].style.opacity = '';
-                lines[2].style.transform = '';
-            }
-        }
 
         // --- Carousel "En Action" ---
         let carouselIndex = 0;
