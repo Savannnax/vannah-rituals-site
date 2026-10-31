@@ -77,8 +77,58 @@
             outline: 3px solid var(--sand);
             outline-offset: 4px;
         }
+        .care-modal {
+            height: 100%;
+            height: 100dvh;
+        }
+        .care-modal:not(.hidden) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .modal-panel {
+            min-width: 0;
             animation: modal-in .35s ease both;
+        }
+        .modal-scroll {
+            height: 100%;
+            max-height: inherit;
+            min-width: 0;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            grid-template-columns: minmax(0, 1fr);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        .modal-scroll > div { min-width: 0; }
+        .modal-close {
+            position: absolute;
+            top: max(8px, env(safe-area-inset-top, 0px));
+            right: max(8px, env(safe-area-inset-right, 0px));
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            color: var(--coffee);
+            border-radius: 50%;
+        }
+        .modal-close::before {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border-radius: inherit;
+            background: rgba(255, 255, 255, .95);
+            box-shadow: 0 2px 8px rgba(35, 9, 3, .12);
+        }
+        .modal-close:hover::before { background: #F3E9E1; }
+        .modal-close:focus-visible {
+            outline: 2px solid var(--clay);
+            outline-offset: 2px;
+        }
+        .modal-close svg { position: relative; width: 18px; height: 18px; }
+        @media (min-width: 1024px) {
+            .modal-scroll { grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); }
         }
         @keyframes modal-in {
             from { opacity: 0; transform: translateY(24px) scale(.985); }
@@ -92,6 +142,7 @@
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .care-card { transition: none; }
+            .modal-panel { animation: none; }
         }
     </style>
 </head>
@@ -274,15 +325,15 @@
         </section>
     </main>
 
-    <div id="massage-modal" class="hidden fixed inset-0 z-[100] p-0 sm:p-5 md:p-8" role="dialog" aria-modal="true" aria-labelledby="massage-modal-title">
+    <div id="massage-modal" class="care-modal hidden fixed inset-0 z-[100] p-0 sm:p-5 md:p-8" role="dialog" aria-modal="true" aria-labelledby="massage-modal-title">
         <button type="button" class="absolute inset-0 w-full h-full bg-[#170602]/70 backdrop-blur-sm" onclick="closeMassageModal()" aria-label="Fermer la fiche massage"></button>
 
-        <div class="modal-panel relative bg-[#FBF8F4] w-full max-w-6xl h-full sm:h-auto sm:max-h-[calc(100vh-2.5rem)] md:max-h-[calc(100vh-4rem)] mx-auto sm:rounded-[2rem] overflow-y-auto soft-shadow">
-            <button id="massage-modal-close" type="button" onclick="closeMassageModal()" class="sticky top-4 float-right mr-4 sm:mr-5 z-20 w-11 h-11 rounded-full bg-white/95 text-[#230903] shadow-lg flex items-center justify-center hover:bg-[#F3E9E1] transition" aria-label="Fermer">
+        <div class="modal-panel relative bg-[#FBF8F4] w-full max-w-6xl h-full sm:h-auto sm:max-h-[calc(100dvh-2.5rem)] md:max-h-[calc(100dvh-4rem)] mx-auto sm:rounded-[2rem] overflow-hidden soft-shadow">
+            <button id="massage-modal-close" type="button" onclick="closeMassageModal()" class="modal-close" aria-label="Fermer">
                 <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
             </button>
 
-            <div class="grid lg:grid-cols-[.78fr_1.22fr]">
+            <div class="modal-scroll grid">
                 <div class="relative min-h-[340px] lg:min-h-0 lg:h-[calc(100vh-4rem)] lg:max-h-[900px] lg:sticky lg:top-0 lg:self-start overflow-hidden">
                     <img src="care-massage.webp" alt="Ambiance chaleureuse pour un massage personnalisé" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#230903]/95 via-[#230903]/35 to-transparent"></div>
@@ -295,7 +346,7 @@
                     </div>
                 </div>
 
-                <div class="p-6 sm:p-8 md:p-11 lg:p-12 clear-both">
+                <div class="p-6 sm:p-8 md:p-11 lg:p-12">
                     <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Choisissez votre durée</p>
                     <h3 class="text-3xl md:text-4xl text-[#230903] mb-3">Une même expérience, trois façons de ralentir.</h3>
                     <p class="text-[#5E2B0A] leading-relaxed mb-8">Chaque séance commence par un court échange pour cibler vos besoins et ajuster les pressions.</p>
@@ -328,7 +379,7 @@
 
                         <div class="grid md:grid-cols-2 gap-4 mb-8">
                             <div class="rounded-2xl bg-white border border-[#CCB7A5] p-6">
-                                <div class="flex items-start justify-between gap-4 mb-5">
+                                <div class="flex flex-col sm:flex-row items-start justify-between gap-4 mb-5">
                                     <div><p class="font-serif text-2xl text-[#230903]">Carte 3 massages</p><p class="text-sm text-[#9D5B38]">Valable 4 mois dès l’achat</p></div>
                                     <span class="text-xs font-bold bg-[#F3E9E1] text-[#5E2B0A] px-3 py-1.5 rounded-full whitespace-nowrap">– 15 €</span>
                                 </div>
@@ -340,7 +391,7 @@
                             </div>
 
                             <div class="rounded-2xl bg-[#230903] text-white p-6">
-                                <div class="flex items-start justify-between gap-4 mb-5">
+                                <div class="flex flex-col sm:flex-row items-start justify-between gap-4 mb-5">
                                     <div><p class="font-serif text-2xl">Carte 5 massages</p><p class="text-sm text-[#D3B88C]">Valable 7 mois dès l’achat</p></div>
                                     <span class="text-xs font-bold bg-[#D3B88C] text-[#230903] px-3 py-1.5 rounded-full whitespace-nowrap">Rendez-vous régulier</span>
                                 </div>
@@ -370,15 +421,15 @@
         </div>
     </div>
 
-    <div id="facial-modal" class="hidden fixed inset-0 z-[100] p-0 sm:p-5 md:p-8" role="dialog" aria-modal="true" aria-labelledby="facial-modal-title">
+    <div id="facial-modal" class="care-modal hidden fixed inset-0 z-[100] p-0 sm:p-5 md:p-8" role="dialog" aria-modal="true" aria-labelledby="facial-modal-title">
         <button type="button" class="absolute inset-0 w-full h-full bg-[#170602]/70 backdrop-blur-sm" onclick="closeFacialModal()" aria-label="Fermer la fiche soin visage"></button>
 
-        <div class="modal-panel relative bg-[#FBF8F4] w-full max-w-6xl h-full sm:h-auto sm:max-h-[calc(100vh-2.5rem)] md:max-h-[calc(100vh-4rem)] mx-auto sm:rounded-[2rem] overflow-y-auto soft-shadow">
-            <button id="facial-modal-close" type="button" onclick="closeFacialModal()" class="sticky top-4 float-right mr-4 sm:mr-5 z-20 w-11 h-11 rounded-full bg-white/95 text-[#230903] shadow-lg flex items-center justify-center hover:bg-[#F3E9E1] transition" aria-label="Fermer">
+        <div class="modal-panel relative bg-[#FBF8F4] w-full max-w-6xl h-full sm:h-auto sm:max-h-[calc(100dvh-2.5rem)] md:max-h-[calc(100dvh-4rem)] mx-auto sm:rounded-[2rem] overflow-hidden soft-shadow">
+            <button id="facial-modal-close" type="button" onclick="closeFacialModal()" class="modal-close" aria-label="Fermer">
                 <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
             </button>
 
-            <div class="grid lg:grid-cols-[.78fr_1.22fr]">
+            <div class="modal-scroll grid">
                 <div class="relative min-h-[340px] lg:min-h-0 lg:h-[calc(100vh-4rem)] lg:max-h-[900px] lg:sticky lg:top-0 lg:self-start overflow-hidden">
                     <img src="care-facial.webp" alt="Ambiance douce pour un soin du visage" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#230903]/95 via-[#230903]/30 to-transparent"></div>
@@ -391,7 +442,7 @@
                     </div>
                 </div>
 
-                <div class="p-6 sm:p-8 md:p-11 lg:p-12 clear-both">
+                <div class="p-6 sm:p-8 md:p-11 lg:p-12">
                     <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Choisissez votre soin</p>
                     <h3 class="text-3xl md:text-4xl text-[#230903] mb-3">Une attention adaptée à votre peau et à votre rythme.</h3>
                     <p class="text-[#5E2B0A] leading-relaxed mb-8">Choisissez le temps que vous souhaitez vous accorder. Le soin et le massage qui l’accompagne s’adaptent ensuite à vos besoins et à vos envies du moment.</p>
@@ -449,15 +500,15 @@
         </div>
     </div>
 
-    <div id="aqua-glow-modal" class="hidden fixed inset-0 z-[100] p-0 sm:p-5 md:p-8" role="dialog" aria-modal="true" aria-labelledby="aqua-glow-modal-title">
+    <div id="aqua-glow-modal" class="care-modal hidden fixed inset-0 z-[100] p-0 sm:p-5 md:p-8" role="dialog" aria-modal="true" aria-labelledby="aqua-glow-modal-title">
         <button type="button" class="absolute inset-0 w-full h-full bg-[#170602]/70 backdrop-blur-sm" onclick="closeAquaGlowModal()" aria-label="Fermer la fiche Aqua Glow"></button>
 
-        <div class="modal-panel relative bg-[#FBF8F4] w-full max-w-6xl h-full sm:h-auto sm:max-h-[calc(100vh-2.5rem)] md:max-h-[calc(100vh-4rem)] mx-auto sm:rounded-[2rem] overflow-y-auto soft-shadow">
-            <button id="aqua-glow-modal-close" type="button" onclick="closeAquaGlowModal()" class="sticky top-4 float-right mr-4 sm:mr-5 z-20 w-11 h-11 rounded-full bg-white/95 text-[#230903] shadow-lg flex items-center justify-center hover:bg-[#F3E9E1] transition" aria-label="Fermer">
+        <div class="modal-panel relative bg-[#FBF8F4] w-full max-w-6xl h-full sm:h-auto sm:max-h-[calc(100dvh-2.5rem)] md:max-h-[calc(100dvh-4rem)] mx-auto sm:rounded-[2rem] overflow-hidden soft-shadow">
+            <button id="aqua-glow-modal-close" type="button" onclick="closeAquaGlowModal()" class="modal-close" aria-label="Fermer">
                 <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
             </button>
 
-            <div class="grid lg:grid-cols-[.78fr_1.22fr]">
+            <div class="modal-scroll grid">
                 <div class="relative min-h-[340px] lg:min-h-0 lg:h-[calc(100vh-4rem)] lg:max-h-[900px] lg:sticky lg:top-0 lg:self-start overflow-hidden">
                     <img src="care-aqua-glow.webp" alt="Ambiance lumineuse du soin Aqua Glow" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#230903]/95 via-[#230903]/30 to-transparent"></div>
@@ -470,7 +521,7 @@
                     </div>
                 </div>
 
-                <div class="p-6 sm:p-8 md:p-11 lg:p-12 clear-both">
+                <div class="p-6 sm:p-8 md:p-11 lg:p-12">
                     <p class="eyebrow text-xs font-bold uppercase text-[#9D5B38] mb-3">Le soin coup d’éclat</p>
                     <h3 class="text-3xl md:text-4xl text-[#230903] mb-3">Nettoyer, exfolier et hydrater en profondeur.</h3>
                     <p class="text-[#5E2B0A] leading-relaxed mb-7">Chaque étape est ajustée au confort et aux besoins observés le jour du rendez-vous.</p>
@@ -590,7 +641,8 @@
             massageModalTrigger = document.activeElement;
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
-            document.getElementById('massage-modal-close').focus();
+            modal.querySelector('.modal-scroll').scrollTop = 0;
+            document.getElementById('massage-modal-close').focus({ preventScroll: true });
         }
 
         function closeMassageModal() {
@@ -607,7 +659,8 @@
             facialModalTrigger = document.activeElement;
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
-            document.getElementById('facial-modal-close').focus();
+            modal.querySelector('.modal-scroll').scrollTop = 0;
+            document.getElementById('facial-modal-close').focus({ preventScroll: true });
         }
 
         function closeFacialModal() {
@@ -624,7 +677,8 @@
             aquaGlowModalTrigger = document.activeElement;
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
-            document.getElementById('aqua-glow-modal-close').focus();
+            modal.querySelector('.modal-scroll').scrollTop = 0;
+            document.getElementById('aqua-glow-modal-close').focus({ preventScroll: true });
         }
 
         function closeAquaGlowModal() {
