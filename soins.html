@@ -98,6 +98,26 @@
             overscroll-behavior: contain;
             grid-template-columns: minmax(0, 1fr);
             padding-bottom: env(safe-area-inset-bottom, 0px);
+            scrollbar-width: thin;
+            scrollbar-color: #B58A70 #F3E9E1;
+        }
+        @supports selector(::-webkit-scrollbar) {
+            .modal-scroll { scrollbar-width: auto; scrollbar-color: auto; }
+            .modal-scroll::-webkit-scrollbar { width: 10px; }
+            .modal-scroll::-webkit-scrollbar-track {
+                background: #F3E9E1;
+                border-radius: 999px;
+                margin-block: 18px;
+            }
+            .modal-scroll::-webkit-scrollbar-thumb {
+                min-height: 48px;
+                background: #B58A70;
+                border: 2px solid #F3E9E1;
+                border-radius: 999px;
+            }
+            .modal-scroll::-webkit-scrollbar-thumb:hover { background: var(--clay); }
+            .modal-scroll::-webkit-scrollbar-thumb:active { background: var(--walnut); }
+            .modal-scroll::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
         }
         .modal-scroll > div { min-width: 0; }
         .modal-close {
