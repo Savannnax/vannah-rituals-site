@@ -87,6 +87,22 @@
             border-color: #5E2B0A;
         }
 
+        /* Reserve the tallest format's space at the current screen width. */
+        .offer-panels.is-ready {
+            display: grid;
+            margin-bottom: 2rem;
+        }
+        .offer-panels.is-ready > .offer-panel {
+            grid-area: 1 / 1;
+            min-width: 0;
+            margin-bottom: 0;
+            align-self: start;
+        }
+        .offer-panels.is-ready > .offer-panel:not(.is-active) {
+            visibility: hidden;
+            animation: none;
+        }
+
         /* Carousel dots */
         .carousel-dot.active {
             background-color: #ffffff;
@@ -358,6 +374,7 @@
 
                     <p class="text-sm text-[#5E2B0A] mb-8">Séances individuelles de 15 à 20 minutes. Formats de présence sur site : 4 h pour environ 10 personnes ou 8 h pour environ 20 personnes.</p>
 
+                    <div id="offer-panels" class="offer-panels">
                     <article id="offer-ponctuel" class="offer-panel fade-in mb-8">
                         <h3 class="text-2xl font-serif font-bold text-[#230903] mb-3">Intervention ponctuelle</h3>
                         <p class="text-[#5E2B0A] mb-6">Pour une occasion ponctuelle : féliciter une équipe après un succès, accompagner une période chargée, ou simplement offrir une pause bien méritée.</p>
@@ -394,6 +411,7 @@
                         <p class="text-[#5E2B0A] mb-6">Pour vos événements : semaine de la qualité de vie au travail, séminaire d'entreprise ou journée à thème. Une expérience bien-être pensée sur mesure selon votre programme.</p>
                         <p class="bg-stone-50 p-6 rounded-xl border border-stone-200 text-center text-lg font-bold text-[#5E2B0A]">Sur devis, selon le format de votre événement.</p>
                     </article>
+                    </div>
                 </div>
             </div>
         </div>
@@ -856,7 +874,10 @@
                 button.classList.toggle('active', selected);
                 button.setAttribute('aria-selected', String(selected));
                 button.tabIndex = selected ? 0 : -1;
-                document.getElementById(`offer-${button.dataset.offer}`).hidden = !selected;
+                const panel = document.getElementById(`offer-${button.dataset.offer}`);
+                panel.classList.toggle('is-active', selected);
+                panel.setAttribute('aria-hidden', String(!selected));
+                panel.inert = !selected;
             });
         }
 
@@ -885,6 +906,7 @@
                     buttons[next].focus();
                 });
             });
+            document.getElementById('offer-panels').classList.add('is-ready');
             changeTab('ponctuel');
             tabList.hidden = false;
         });
